@@ -16,8 +16,7 @@ class InformationExtraxtion:
                             for sentence in tokenized_sentences]
 
         for chunk in tagged_sentences:
-            for i in chunk:
-                chunk_store.append(ne_chunk(i, binary=False))
+            chunk_store.append(ne_chunk(chunk, binary=False))
 
         # for chunk in tagged_sentences:
         #     for i in range(1, len(chunk)):

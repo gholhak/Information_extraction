@@ -41,17 +41,11 @@ class DataHandler:
                     finalHit['_source'], indent=10, ensure_ascii=False,))
         return data
 
-    def loadJSONFiles(self):
-        contents = []
-        json_pattern = os.path.join(self.dataDirectory, '*.json')
-        files = glob.glob(json_pattern)
-        for file in files:
-            contents.append(file)
-        return contents
+    def save_as_text(self, data):
+        with open('out.txt', 'w') as f:
+            f.writelines(json.dumps(data))
 
-    def loadSingleJSON(self):
-        data = []
-        with open(self.dataDirectory) as f:
-            for line in f:
-                data.append(json.loads(line))
-        return data
+    def load_as_list(self):
+        with open('out.txt', 'r') as f:
+            new_raw_data = json.loads(f.read())
+        return new_raw_data
