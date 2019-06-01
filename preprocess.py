@@ -30,9 +30,9 @@ class DataHandler:
         return doc
 
     def elastic_server_extraction(self, doc, es):
-        res = es.search(index='tripadvisor', doc_type='tripadvisor', body=doc)
+        res = es.search(index='instatrip', doc_type='instagram', body=doc)
         data = []
-        with open('mydata.json', 'w', encoding='utf-8') as outfile:
+        with open('FarsiData.json', 'w', encoding='utf-8') as outfile:
             for hit in res['hits']['hits']:
                 myhit = json.dumps(hit)
                 finalHit = json.loads(myhit)
@@ -42,10 +42,10 @@ class DataHandler:
         return data
 
     def save_as_text(self, data):
-        with open('out.txt', 'w') as f:
+        with open('FarsiData.txt', 'w') as f:
             f.writelines(json.dumps(data))
 
     def load_as_list(self):
-        with open('out.txt', 'r') as f:
+        with open('FarsiData.txt', 'r') as f:
             new_raw_data = json.loads(f.read())
         return new_raw_data

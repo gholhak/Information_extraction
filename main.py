@@ -19,15 +19,21 @@ ir_obj = InformationExtraxtion()
 def main():
     _corpora = []
     dh_obj = DataHandler(HOST, PORT, DATA_DIRECTORY)
-#     conn = dh_obj.server_connection()
-#     qry = dh_obj.query_designer()
-#     raw_data = dh_obj.elastic_server_extraction(qry, conn)
+    # conn = dh_obj.server_connection()
+    # qry = dh_obj.query_designer()
+    # raw_data = dh_obj.elastic_server_extraction(qry, conn)
 
+    # dh_obj.save_as_text(raw_data)
     raw_data = dh_obj.load_as_list() 
 
-    for i in range(len(raw_data)):
-        labeled = ir_obj.tokenizer(raw_data[i]['body'])
-        _corpora.append(labeled)
+    # for i in range(10): raw_data[i]['body']
+
+    text = "I saw John when he was in U.s. We arranged a meetin and he talked about his fired Jessica. He told me that Jessica had been living in Paris for 10 years."
+    labeled = ir_obj.tokenizer(text)
+    _corpora.append(labeled)
+
+    rel_corpora = ir_obj.relation_extraction(_corpora)
+    print(rel_corpora)
 
 
 '''

@@ -1,5 +1,5 @@
 
-from nltk import sent_tokenize, word_tokenize, pos_tag, ne_chunk, ne_chunk_sents
+from nltk import sent_tokenize, word_tokenize, pos_tag, ne_chunk, ne_chunk_sents, re
 import nltk
 
 
@@ -18,9 +18,16 @@ class InformationExtraxtion:
         for chunk in tagged_sentences:
             chunk_store.append(ne_chunk(chunk, binary=False))
 
-        # for chunk in tagged_sentences:
-        #     for i in range(1, len(chunk)):
-        #         temp = ne_chunk(chunk[i], binary=False)
-        #         chunk_store.append(temp)
-
         return chunk_store
+
+    def relation_extraction(self, data):
+        out = []
+        class doc():
+            pass
+        IN = re.compile(r'.*\b in \b(?!\b.+ing)')
+        doc.headline = ["test headline for sentence"]
+        for sent in enumerate(data):
+            doc.text = sent
+            for rel in nltk.sem.extract_rels('PER', 'LOC', doc, corpus='ieer', pattern=IN):
+                out.append(nltk.sem.rtuple(rel))
+        return out
