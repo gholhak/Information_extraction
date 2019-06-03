@@ -3,26 +3,27 @@ import json
 import re
 import codecs
 from collections import Counter
+import itertools
+import re
+import json
 
 from FarsiTokenizer import Tokenizer
-tk_obj = Tokenizer()
+myobj = Tokenizer()
 
-vocab = []
-
-text = "دکتر روحانی به نیویورک سفر کرد!"
-
-
-def load_as_list():
-    with codecs.open('data/UPC-2016.txt', encoding='UTF-8') as f:
-        # new_raw_data = f.readlines()
-        for line in f:
-            vocab.append(line.strip().split())
-    return vocab
+text_for_test = 'data/test.txt'
+farsi_data = 'data/FarsiData.txt'
+TAGG_data = 'data/UPC-2016.txt'
 
 
-_words = tk_obj.word_tokenizer(text)
+def main():
+    _pos = {}
+    text = myobj.load_as_list_Farsi(text_for_test)
+    tagg = myobj.load_as_list_Farsi(TAGG_data)
+    sents = myobj.sent_tokenizer(str(text))
+    words = myobj.word_tokenizer(sents)
+    fa = myobj.load_as_list_Farsi(farsi_data)
+    _pos_data = myobj.regexp_parser(tagg)
 
-data = load_as_list()
 
-for words in _words:
-    print(re.search(words, data))
+if __name__ == '__main__':
+    main()

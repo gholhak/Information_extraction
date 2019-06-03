@@ -1,11 +1,18 @@
-
 from nltk import sent_tokenize, word_tokenize, pos_tag, ne_chunk, ne_chunk_sents, re
 import nltk
+from fuzzywuzzy import fuzz
+from fuzzywuzzy import process
 
 
 class InformationExtraxtion:
     # def __init__(self, data):
     #     self.data = data
+
+    def fuzzzy(self, source, query):
+        # choices = process.extract(query, source)
+        _top = process.extractOne(query, source)
+        _bests = process.extractBests(query, source)
+        return _bests
 
     def tokenizer(self, sample):
         chunk_store = []
@@ -22,8 +29,10 @@ class InformationExtraxtion:
 
     def relation_extraction(self, data):
         out = []
+
         class doc():
             pass
+
         IN = re.compile(r'.*\b in \b(?!\b.+ing)')
         doc.headline = ["test headline for sentence"]
         for sent in enumerate(data):
