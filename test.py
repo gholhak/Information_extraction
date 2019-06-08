@@ -1,28 +1,26 @@
-
-import json
-import re
-import codecs
-from collections import Counter
-import itertools
-import re
-import json
-
+from data_utils import DataHandler
 from FarsiTokenizer import Tokenizer
-myobj = Tokenizer()
+import pandas as pd
+from sklearn_crfsuite import CRF
+from sklearn.ensemble import RandomForestClassifier
+import numpy as np
 
-text_for_test = 'data/test.txt'
-farsi_data = 'data/FarsiData.txt'
-TAGG_data = 'data/UPC-2016.txt'
+filename = 'data\\train_fold1.txt'
+load_file_name = 'data\\my_ner.csv'
+tk_obj = Tokenizer()
+dh_obj = DataHandler()
+
+
+def feature_map(word):
+    return np.ndarray([word.istitle(), word.islower])
 
 
 def main():
-    _pos = {}
-    text = myobj.load_as_list_Farsi(text_for_test)
-    tagg = myobj.load_as_list_Farsi(TAGG_data)
-    sents = myobj.sent_tokenizer(str(text))
-    words = myobj.word_tokenizer(sents)
-    fa = myobj.load_as_list_Farsi(farsi_data)
-    _pos_data = myobj.regexp_parser(tagg)
+    # data = dh_obj.load_farsi_tokens(filename)
+    # dh_obj.extract_farsi_tokens(data)
+    data = pd.read_csv('data\\my_ner.csv')
+    data = data.fillna(method="ffill")
+    print(data.tail(10))
 
 
 if __name__ == '__main__':

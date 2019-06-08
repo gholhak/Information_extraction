@@ -17,12 +17,12 @@ def loadCSV_as_ndarray(data):
 mydata = loadCSV_as_ndarray('MW1.csv')
 
 x = mydata[:, 0]
-y = mydata[:, 1]
+y = mydata[:, 6]
 z = mydata[:, 37]
-h = np.ndarray(shape=(250,1), dtype=int, order='F')
+# h = np.ndarray(shape=(250,1), dtype=int, order='F')
 
-for i in range(250):
-    h[i, :] = random.randint(1, 2)
+# for i in range(250):
+#     h[i, :] = random.randint(1, 2)
 # x = [0, 0, 0, 0, 1, 1, 1, 1]
 # y = [0, 0, 1, 1, 0, 0, 1, 1]
 # z = [0, 1, 1, 0, 0, 1, 0, 1]
@@ -32,4 +32,5 @@ for i in range(250):
 # print("H(x:y|z), etc", ee.cmidd(x, y, z), ee.cmidd(z, y, x), ee.cmidd(x, z, y))
 
 print(ee.cmiddd(x, y, z))
-print(ee.cmidd(x, y, z, h))
+print(ee.midd(x, y))
+# print(ee.cmidd(x, y, z, h))

@@ -1,7 +1,8 @@
-from preprocess import DataHandler
-from IR import InformationExtraxtion
+from elastic_interface import Extract_data
+from extract_entities import Farsi_NER
 import langdetect
 from FarsiTokenizer import Tokenizer
+from data_utils import DataHandler
 # from Chunker import FindChunks
 # from POSTaggerr import POSTagger
 import nltk
@@ -19,9 +20,9 @@ DATA_DIRECTORY = "E:\\projects\\Samira\\mydatanew.json"
 The main function of the program.
 Please note that the initialization of the objects are inside the main function.
 '''
-ir_obj = InformationExtraxtion()
-
-dh_obj = DataHandler(HOST, PORT, DATA_DIRECTORY)
+ir_obj = Farsi_NER()
+dh_obj = DataHandler()
+es_obj = Extract_data(HOST, PORT, DATA_DIRECTORY)
 tk_obj = Tokenizer()
 
 filename = "data\\train_fold1.txt"
@@ -30,7 +31,6 @@ filename = "data\\train_fold1.txt"
 def main():
     ner_corpora = []
     fuzzy_ner = []
-    dh_obj = DataHandler(HOST, PORT, DATA_DIRECTORY)
     # conn = dh_obj.server_connection()
     # qry = dh_obj.query_designer()
     # raw_data = dh_obj.elastic_server_extraction(qry, conn)
@@ -44,13 +44,13 @@ def main():
     #         if flag == "fa":
     sents = tk_obj.sent_tokenizer(raw_data)
     words = tk_obj.word_tokenizer(sents)
-    train_fold = tk_obj.load_as_list_Farsi(filename)
+    train_fold = dh_obj.load_farsi_tokens(filename)
     for _word in words:
         for _w in _word:
             _top_match = ir_obj.fuzzzy(train_fold, _w)
             fuzzy_ner.append(_top_match)
             # _w = _w.strip('.')
-            # parsed = tk_obj.regexp_parser(train_fold, _w, 'pos')
+            parsed = tk_obj.regexp_parser(train_fold, _w, 'ner')
             # ner_corpora.append(parsed)
 
     print('hi')

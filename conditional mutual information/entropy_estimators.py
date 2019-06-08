@@ -1,10 +1,15 @@
-
 import scipy.spatial as ss
 from scipy.special import digamma
 from math import log
 import numpy as np
 import random
 import warnings
+
+
+def PCC(x, y):
+
+    _varxi = np.var()
+
 
 def entropy(x, k=3, base=2):
     """ The classic K-L k-nearest neighbor continuous entropy estimator
@@ -125,7 +130,7 @@ def midd(x, y, base=2):
 
 
 def cmiddd(x, y, z, base=2):
-    assert len(x)==len(y)==len(z)
+    assert len(x) == len(y) == len(z)
     xz = np.c_[x, z]
     yz = np.c_[y, z]
     xyz = np.c_[x, y, z]
@@ -239,13 +244,11 @@ def query_neighbors(tree, x, k):
 
 
 def avgdigamma(points, dvec):
-
     n_elements = len(points)
     tree = ss.cKDTree(points)
     avg = 0.
     dvec = dvec - 1e-15
     for point, dist in zip(points, dvec):
-    
         num_points = len(tree.query_ball_point(point, dist, p=float('inf')))
         avg += digamma(num_points) / n_elements
     return avg
@@ -254,8 +257,7 @@ def avgdigamma(points, dvec):
 # TESTS
 
 def shuffle_test(measure, x, y, z=False, ns=200, ci=0.95, **kwargs):
-
-    x_clone = np.copy(x)  
+    x_clone = np.copy(x)
     outputs = []
     for i in range(ns):
         np.random.shuffle(x_clone)

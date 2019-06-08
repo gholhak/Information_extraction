@@ -1,6 +1,4 @@
 try:
-    # Fix UTF8 output issues on Windows console.
-    # Does nothing if package is not installed
     from win_unicode_console import enable
 
     enable()
@@ -10,7 +8,7 @@ except ImportError:
 #
 import re
 import sys
-from preprocess import DataHandler
+from data_utils import DataHandler
 import codecs
 from collections import OrderedDict
 
@@ -54,40 +52,3 @@ class Tokenizer():
             sent_holder_for_each_word.insert(i, word_holder)
             i = i + 1
         return sent_holder_for_each_word
-
-    def load_as_list_Farsi(self, filename):
-        vocab = {}
-        with codecs.open(filename, encoding='UTF-8') as f:
-            lines = f.readlines()
-            # for line in f:
-            #     vocab.update(line.strip().split())
-        return lines
-
-    def regexp_parser(self, source, dest, varagin):
-        res = []
-        if varagin == "pos":
-            for t in source:
-                # NER parser
-                t = t.strip('\n')
-                full_match_group = re.findall('(\S+)', t)
-                # key = re.findall(r'\w\s(.*)', t)
-                if full_match_group:
-                    key = full_match_group[0]
-                    val = full_match_group[1]
-                    if key == dest:
-                        res.append([val, dest])
-        if varagin == "ner":
-            key = str(re.findall(r'\w+:?(?=\: )', t))
-            val = str(re.findall(r'\:\s(.+)', t))
-            key_temp = key.strip('[]')
-            key = key_temp.strip("''")
-            val_temp = val.strip('[]')
-            val = val_temp.strip("''")
-
-        # dic = DefaultListOrderedDict()
-        # for i, k in enumerate(res):
-        #     dic[k].append(res[i])
-        #     print(dic)
-        # for POStagger
-
-        return res

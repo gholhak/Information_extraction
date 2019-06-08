@@ -1,10 +1,10 @@
-from preprocess import DataHandler
+from data_utils import DataHandler
 import polyglot
 import json
 from FarsiTokenizer import Tokenizer
 from langdetect import *
 import parsivar
-from preprocess import DataHandler
+from data_utils import DataHandler
 import codecs
 from parsivar import *
 
