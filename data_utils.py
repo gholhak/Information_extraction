@@ -46,5 +46,5 @@ class DataHandler:
     def loadCSV(self, file_path):
         with open(file_path, 'r', encoding='utf-8') as csvreader:
             myreader = csv.reader(csvreader)
-            #mydata = list(myreader)
-        return myreader
+            mydata = list(myreader)
+        return mydata

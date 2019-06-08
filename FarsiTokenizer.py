@@ -37,7 +37,6 @@ class Tokenizer():
 
     def word_tokenizer(self, data):
         sent_holder_for_each_word = []
-
         i = 0
         for each_sent in data:
             word_holder = []
