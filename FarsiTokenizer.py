@@ -35,6 +35,7 @@ class Tokenizer():
             sent_holder.append(sent.replace('\n', '').strip())
         return sent_holder
 
+    # before start tokenizing words, first you need to run the sentence tokenizer function
     def word_tokenizer(self, data):
         sent_holder_for_each_word = []
         i = 0
