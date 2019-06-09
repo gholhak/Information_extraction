@@ -13,6 +13,7 @@ from sklearn.svm import SVC
 from sklearn.pipeline import Pipeline
 from features_extract import FeatureTransformer
 from sklearn.ensemble import RandomForestClassifier
+from model_util import model_handler
 
 filename = 'data\\train_fold1.txt'
 load_file_name = 'data\\train_data.csv'
@@ -20,6 +21,7 @@ load_file_name = 'data\\train_data.csv'
 tk_obj = Tokenizer()
 dh_obj = DataHandler()
 mt_obj = MemoryTagger()
+mh_obj = model_handler()
 v = DictVectorizer(sparse=False)
 clf = SVC(kernel='linear', C=1)
 ft = FeatureTransformer()
@@ -52,10 +54,10 @@ def main():
     clf = RandomForestClassifier()
     clf.fit(_traindata, _traindata['tag'])
 
-    saved_model = pickle.dumps(clf)
-    svm_from_pickle = pickle.loads(saved_model)
+    mh_obj.save_model(clf, path='m_svm')
+    m_svm = mh_obj.load_model(filename='m_svm')
     x_test = [[2, 4], [12, 1], [9, 1]]
-    pred2 = svm_from_pickle.predict(x_test)
+    pred2 = m_svm.predict(x_test)
     print(pred2)
     # report = classification_report(y_pred=pred, y_true=_traindata['tag'])
     # print(report)
