@@ -8,16 +8,11 @@ class DataHandler:
     def __init__(self):
         pass
 
-    def save_as_text(self, data):
-        with open('FarsiData.txt', 'w', encoding='UTF-8') as f:
+    def save_list_data_as_txt(self, data, filename):
+        with open("data\\" + filename, 'w', encoding='UTF-8') as f:
             f.writelines(json.dumps(data))
 
-    def load_as_list(self):
-        with open('FarsiData.txt', 'r', encoding='UTF-8') as f:
-            new_raw_data = json.loads(f.read())
-        return new_raw_data
-
-    def load_farsi_tokens(self, filename):
+    def load_txt_data_as_list(self, filename):
         vocab = {}
         with codecs.open(filename, encoding='UTF-8') as f:
             lines = f.readlines()
@@ -25,9 +20,9 @@ class DataHandler:
             #     vocab.update(line.strip().split())
         return lines
 
-    def extract_farsi_tokens(self, source):
+    def extract_tagged_tokens_as_csv(self, data, filename):
         data_obj = []
-        for t in source:
+        for t in data:
             # NER parser
             t = t.strip('\n')
             full_match_group = re.findall('(\S+)', t)
@@ -38,7 +33,7 @@ class DataHandler:
                 _data = [key, val]
                 data_obj.append(_data)
 
-        with codecs.open('data\\my_ner.csv', mode='w', encoding='UTF-8') as csv_file:
+        with codecs.open('data\\' + filename, mode='w', encoding='UTF-8') as csv_file:
             for rows in data_obj:
                 wr = csv.writer(csv_file)
                 wr.writerow(rows)

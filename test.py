@@ -1,7 +1,10 @@
 from data_utils import DataHandler
 from FarsiTokenizer import Tokenizer
 import pandas as pd
+import pickle
+from joblib import dump, load
 from pandas import *
+import numpy as np
 from sklearn.model_selection import cross_val_score, cross_val_predict
 from sklearn.feature_extraction import DictVectorizer
 from classifier import MemoryTagger
@@ -12,7 +15,7 @@ from features_extract import FeatureTransformer
 from sklearn.ensemble import RandomForestClassifier
 
 filename = 'data\\train_fold1.txt'
-load_file_name = 'data\\my_ner.csv'
+load_file_name = 'data\\train_data.csv'
 
 tk_obj = Tokenizer()
 dh_obj = DataHandler()
@@ -22,34 +25,40 @@ clf = SVC(kernel='linear', C=1)
 ft = FeatureTransformer()
 
 
-
 def main():
-    # data = dh_obj.load_farsi_tokens(filename)
-    # dh_obj.extract_farsi_tokens(data)
-    _data = pd.read_csv('data\\my_ner.csv')
-    _data = _data.fillna(method="ffill")
+    # train_data = pd.read_csv('data\\train_data.csv')
+    # test_data = pd.read_csv('data\\test_fold.csv')
+    # train_data = train_data.fillna(method="ffill")
+    # test_data = test_data.fillna(method="ffill")
 
-    train_data = _data.iloc[36200:36225]
+    # train_data = train_data.iloc[36200:36225]
 
-    tags = train_data["tag"].values.tolist()
+    # tags = train_data["tag"].values.tolist()
 
     # mt_obj.fit(train_data['word'], tags)
 
-    ft.fit(train_data, train_data['tag'])
-    enc = ft.transform(train_data)
-    train_data['word'] = enc
+    # ft.fit(train_data, train_data['tag'])
+    # myword = ft.transform(train_data)
+    # print(myword[:0])
+    # myword = np.array(myword)
+
+    # train_data['word'] = encoded_traindata
     # df = DataFrame(train_data)
     # df.to_csv('train_data.csv', sep=',', encoding='utf-8')
-    train_data = pd.read_csv('train_data.csv')
-    # print(train_data['word'].values.tolist())
-    # print(train_data['tag'].values.tolist())
-    pred = cross_val_predict(estimator=RandomForestClassifier(), X=train_data, y=train_data['tag'], cv=5)
-    # pred = cross_val_predict(Pipeline([("feature_map", FeatureTransformer()),
-    #                                    ("clf", RandomForestClassifier(n_estimators=20, n_jobs=3))]),
-    #                          X=train_data, y=train_data['tag'], cv=5)
+    # train_data = pd.read_csv('train_data.csv')
+    _traindata = pd.read_csv('data\\trainingDataset.csv', sep=',')
+    # pred = cross_val_predict(estimator=SVC(), X=_traindata, y=_traindata['tag'], cv=5)
 
-    report = classification_report(y_pred=pred, y_true=train_data['tag'])
-    print(report)
+    clf = RandomForestClassifier()
+    clf.fit(_traindata, _traindata['tag'])
+
+    saved_model = pickle.dumps(clf)
+    svm_from_pickle = pickle.loads(saved_model)
+    x_test = [[2, 4], [12, 1], [9, 1]]
+    pred2 = svm_from_pickle.predict(x_test)
+    print(pred2)
+    # report = classification_report(y_pred=pred, y_true=_traindata['tag'])
+    # print(report)
 
 
 # words = _data["word"].values.tolist()
