@@ -38,7 +38,7 @@ class DataHandler:
                 wr = csv.writer(csv_file)
                 wr.writerow(rows)
 
-    def loadCSV(self, file_path):
+    def load_csv_as_list(self, file_path):
         with open(file_path, 'r', encoding='utf-8') as csvreader:
             myreader = csv.reader(csvreader)
             mydata = list(myreader)
