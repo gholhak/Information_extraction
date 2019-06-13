@@ -1,9 +1,10 @@
-
 from features_extract import TF_IDF
 from FarsiTokenizer import Tokenizer
 from data_utils import DataHandler
 import pandas as pd
 from pandas import DataFrame
+from sklearn.feature_extraction import DictVectorizer
+from sklearn.feature_extraction.text import HashingVectorizer
 
 '''
 the classes are instantiated here.
@@ -13,10 +14,13 @@ tf_obj = TF_IDF()
 tk_obj = Tokenizer()
 dh_handler = DataHandler()
 
+v = DictVectorizer(sparse=False)
+
 '''
 The NER classification dataset path
 '''
 doc = 'data\\ner.txt.csv'
+
 
 def main():
     # load the ner dataset as csv file using pandas framework
@@ -47,7 +51,7 @@ def main():
     '''
     for document in doc_holder:
         # computes term frequency of each word in each document
-        tf_holder = tf_obj.computeTermsTF(document)
+        tf_holder = tf_obj.computeTF(document)
         # append each document to document holder list
         tfdict_per_document.append(tf_holder)
         num_doc = tf_obj.number_of_documents_containing_terms(tfdict_per_document)
@@ -61,9 +65,8 @@ def main():
         tfidfvec = tf_obj.computeCorpusTFIDFDict(tfdict_per_document[i], idfDict_holder[i])
         tf_idf_holder.append(tfidfvec)
 
-    print(tf_idf_holder)
+    print(tfdict_per_document)
 
 
 if __name__ == '__main__':
-    # please execute the program in debug mode 
     main()

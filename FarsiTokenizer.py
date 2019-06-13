@@ -7,10 +7,8 @@ except ImportError:
 
 #
 import re
-import sys
-from data_utils import DataHandler
-import codecs
 from collections import OrderedDict
+import math
 
 vocab = []
 
@@ -25,23 +23,22 @@ class Tokenizer():
     def __init__(self, *args, **kwargs):
         pass
 
+    def dot_product(self, vector_x, vector_y):
+        dot = 0.0
+        for e_x, e_y in zip(vector_x, vector_y):
+            dot += e_x * e_y
+        return dot
+
+    def magnitude(vector):
+        mag = 0.0
+        for index in vector:
+            mag += math.pow(index, 2)
+        return math.sqrt(mag)
+
     def sent_tokenizer(self, data):
-        sent_holder = []
         pattern = re.compile(r'([!\.\،\!\;\?⸮؟]+)[ \n]+')
         temp = pattern.sub(r'\1\n\n', data)
-        # for sent in temp.split('\n\n'):
-        #     sent = sent.strip('[]')
-        #     sent = sent.strip("''")
-        #     sent_holder.append(sent.replace('\n', '').strip())
-
         return [sentence.replace('\n', ' ').strip() for sentence in temp.split('\n\n') if sentence.strip()]
-
-    def document_tokenizer(self, data):
-        doc_holder = []
-        # (?=\-). *
-        doc1 = str(re.findall(r'^.*(?=\-)', data))
-        doc2 = str(re.findall(r'(?=\-).*', data))
-        return doc_holder
 
     def ner_data_document_extraction(self, data):
         # corpus = ' '.join(corpus)

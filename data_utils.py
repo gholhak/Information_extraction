@@ -2,6 +2,7 @@ import json
 import re
 import codecs
 import csv
+import numpy as np
 
 
 class DataHandler:
@@ -43,3 +44,18 @@ class DataHandler:
             myreader = csv.reader(csvreader)
             mydata = list(myreader)
         return mydata
+
+    def mem_to_single_column_classification(self):
+        index_holder = []
+        data = np.genfromtxt('data\\ner.txt - Copy.csv', dtype=int, delimiter=',')
+        for i in range(len(data)):
+            if i != 0:
+                for j in range(21):
+                    if data[i, j] != 0:
+                        index_holder.append(data[0, j])
+
+        with open('data\\tags.csv', 'w', newline='\n') as myfile:
+            wr = csv.writer(myfile, dialect='excel')
+            for row in index_holder:
+                wr.writerow(row)
+            myfile.close()
