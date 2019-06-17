@@ -12,7 +12,7 @@ dh_handler = DataHandler()
 
 
 def main():
-    corpus_file_address = 'data\\sample.csv'
+    corpus_file_address = 'data\\ner.txt.csv'
     # load the ner dataset as csv file using pandas framework
     raw_corpus = pd.read_csv(corpus_file_address)
     # fill the 'na' values in the dataset using ffill method
@@ -22,17 +22,19 @@ def main():
     corpus_as_a_list = list(x for x in raw_corpus['words'])
 
     # convert membership matrix of the tags to a single column with multiple class
-    tags_list = dh_handler.mem_to_single_column_classification()
+    # tags_list = dh_handler.mem_to_single_column_classification()
 
     # consider each sentence in corpus as a document
     separated_documents = tk_obj.ner_data_document_extraction(raw_corpus)
     # extract unique tokens from the corpus
-    all_unique_terms, correspoding_class_values = co_obj.extract_unique_terms(corpus_as_a_list, raw_corpus)
+    all_unique_terms, unique_terms_with_labels = co_obj.extract_unique_terms(corpus_as_a_list, raw_corpus)
     # count the co-occurance of each term in for each document
     co_occurence_matrix = co_obj.compute_count(all_unique_terms, separated_documents)
+    co_occurence_matrix = pd.DataFrame(co_occurence_matrix, columns=all_unique_terms)
     t_mat = co_occurence_matrix.T
-    
-    # mydata = pd.DataFrame(co_occurence_matrix, columns=all_unique_terms)
+
+    # output final dataset
+    dh_handler.merg(t_mat, unique_terms_with_labels)
 
 
 if __name__ == '__main__':

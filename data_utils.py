@@ -10,6 +10,21 @@ class DataHandler:
     def __init__(self):
         pass
 
+    def dict_to_csv(self, data):
+        csv_columns = ['words', 'PERSON', 'NORP', 'FACILITY', 'ORGANIZATION', 'GPE', 'LOCATION', 'PRODUCT', 'EVENT',
+                       'WORK_OF_ART', 'LAW',
+                       'LANGUAGE', 'DATE', 'TIME', 'PERCENT', 'MONEY', 'MEASUREMENT', 'ORDINAL', 'CARDINAL', 'MISC',
+                       'PUNC', 'O']
+        csv_file = "data\\tags.csv"
+        try:
+            with open(csv_file, 'w') as csvfile:
+                writer = csv.DictWriter(csvfile, fieldnames=csv_columns)
+                writer.writeheader()
+                for i in range(len(data)):
+                    writer.writerow(data.iloc[i, 0:22])
+        except IOError:
+            print("I/O error")
+
     def save_list_data_as_txt(self, data, filename):
         with open("data\\" + filename, 'w', encoding='UTF-8') as f:
             f.writelines(json.dumps(data))
@@ -49,15 +64,26 @@ class DataHandler:
     def mem_to_single_column_classification(self):
         index_holder = []
         data = np.genfromtxt('data\\ner.txt - Copy.csv', dtype=int, delimiter=',')
-        print(len(data))
         for i in range(len(data)):
             if i != 0:
                 for j in range(21):
-                    print(data[i,:])
                     if data[i, j] != 0:
                         index_holder.append(data[0, j])
         return pd.DataFrame(index_holder)
 
+    def merg(self, data, unique_terms_with_labels, t_mat):
+        with open('data\\tags.csv', 'w') as file:
+            values = []
+            for key, val in unique_terms_with_labels.items():
+                a = []
+                for vec in t_mat.loc[key, :]:
+                    a.append(vec)
+                b = []
+                for sub_val in val:
+                    b.append(sub_val)
+                joined_list = a + b
+                writer = csv.writer(file, delimiter=',', lineterminator='\n')
+                writer.writerow(joined_list)
 
         # with open('data\\tags.csv', 'w', newline='\n') as myfile:
         #     wr = csv.writer(myfile, dialect='excel')

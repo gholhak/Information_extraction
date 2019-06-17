@@ -105,7 +105,7 @@ class Tokenizer():
                 temp_holder = []
             else:
                 temp_holder.append(word)
-        doc_holder.append(temp_holder)
+        # doc_holder.append(temp_holder)
         return doc_holder
 
     # before start tokenizing words, first you need to run the sentence tokenizer function
