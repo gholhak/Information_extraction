@@ -20,6 +20,6 @@ doc = 'data\\ner.txt.csv'
 corpus = pd.read_csv(doc)
 
 doc_holder = tk_obj.ner_data_document_extraction(corpus)
-
 training_data = w2v.generate_training_data(doc_holder)
 w2v.train(training_data)
+print('log')

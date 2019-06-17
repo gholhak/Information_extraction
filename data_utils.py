@@ -3,6 +3,7 @@ import re
 import codecs
 import csv
 import numpy as np
+import pandas as pd
 
 
 class DataHandler:
@@ -48,14 +49,18 @@ class DataHandler:
     def mem_to_single_column_classification(self):
         index_holder = []
         data = np.genfromtxt('data\\ner.txt - Copy.csv', dtype=int, delimiter=',')
+        print(len(data))
         for i in range(len(data)):
             if i != 0:
                 for j in range(21):
+                    print(data[i,:])
                     if data[i, j] != 0:
                         index_holder.append(data[0, j])
+        return pd.DataFrame(index_holder)
 
-        with open('data\\tags.csv', 'w', newline='\n') as myfile:
-            wr = csv.writer(myfile, dialect='excel')
-            for row in index_holder:
-                wr.writerow(row)
-            myfile.close()
+
+        # with open('data\\tags.csv', 'w', newline='\n') as myfile:
+        #     wr = csv.writer(myfile, dialect='excel')
+        #     for row in index_holder:
+        #         wr.writerow(row)
+        #     myfile.close()

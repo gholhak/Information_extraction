@@ -4,7 +4,7 @@ from data_utils import DataHandler
 import pandas as pd
 from pandas import DataFrame
 from sklearn.feature_extraction import DictVectorizer
-from sklearn.feature_extraction.text import HashingVectorizer
+from sklearn.feature_extraction.text import HashingVectorizer, TfidfVectorizer
 
 '''
 the classes are instantiated here.
@@ -13,6 +13,8 @@ df = DataFrame()
 tf_obj = TF_IDF()
 tk_obj = Tokenizer()
 dh_handler = DataHandler()
+
+sk_tfidf = TfidfVectorizer()
 
 v = DictVectorizer(sparse=False)
 
@@ -35,9 +37,6 @@ def main():
     idfDict_holder = stores idf values for each term in respective document
     tf_idf_holder = stores the tf-idf scores for each term in each document
     '''
-    tfdict_per_document = []
-    unique_terms_holder = []
-    idfDict_holder = []
     tf_idf_holder = []
 
     '''
@@ -49,23 +48,16 @@ def main():
     '''
     Iterates over each document in doc_holder list
     '''
-    for document in doc_holder:
-        # computes term frequency of each word in each document
-        tf_holder = tf_obj.computeTF(document)
-        # append each document to document holder list
-        tfdict_per_document.append(tf_holder)
-        num_doc = tf_obj.number_of_documents_containing_terms(tfdict_per_document)
-        unique_terms_holder.append(num_doc)
 
-    for uni_terms in unique_terms_holder:
-        idfDict = tf_obj.computeIDFDict(uni_terms, tfdict_per_document)
-        idfDict_holder.append(idfDict)
+    tf_holder = tf_obj.computeTF(doc_holder)
+    unique_terms_holder = tf_obj.number_of_documents_containing_terms(tf_holder)
+    idfDict = tf_obj.computeIDFDict(unique_terms_holder, tf_holder)
 
-    for i in range(len(tfdict_per_document)):
-        tfidfvec = tf_obj.computeCorpusTFIDFDict(tfdict_per_document[i], idfDict_holder[i])
+    for i in range(len(tf_holder)):
+        tfidfvec = tf_obj.computeCorpusTFIDFDict(tf_holder[i], idfDict[i])
         tf_idf_holder.append(tfidfvec)
 
-    print(tfdict_per_document)
+    print(tf_idf_holder)
 
 
 if __name__ == '__main__':

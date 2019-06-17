@@ -42,6 +42,7 @@ class Tokenizer():
 
     def ner_data_document_extraction(self, data):
         # corpus = ' '.join(corpus)
+        class_holder = {}
         corpus = list(x for x in data['words'])
         doc_holder = []
         temp_holder = []
@@ -104,6 +105,7 @@ class Tokenizer():
                 temp_holder = []
             else:
                 temp_holder.append(word)
+        doc_holder.append(temp_holder)
         return doc_holder
 
     # before start tokenizing words, first you need to run the sentence tokenizer function
