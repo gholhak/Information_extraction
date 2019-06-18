@@ -15,7 +15,7 @@ class DataHandler:
                        'WORK_OF_ART', 'LAW',
                        'LANGUAGE', 'DATE', 'TIME', 'PERCENT', 'MONEY', 'MEASUREMENT', 'ORDINAL', 'CARDINAL', 'MISC',
                        'PUNC', 'O']
-        csv_file = "data\\tags.csv"
+        csv_file = "datasets\\NER_data_multiple_column_tag.csv"
         try:
             with open(csv_file, 'w') as csvfile:
                 writer = csv.DictWriter(csvfile, fieldnames=csv_columns)
@@ -26,7 +26,7 @@ class DataHandler:
             print("I/O error")
 
     def save_list_data_as_txt(self, data, filename):
-        with open("data\\" + filename, 'w', encoding='UTF-8') as f:
+        with open("datasets\\" + filename, 'w', encoding='UTF-8') as f:
             f.writelines(json.dumps(data))
 
     def load_txt_data_as_list(self, filename):
@@ -50,7 +50,7 @@ class DataHandler:
                 _data = [key, val]
                 data_obj.append(_data)
 
-        with codecs.open('data\\' + filename, mode='w', encoding='UTF-8') as csv_file:
+        with codecs.open('datasets\\' + filename, mode='w', encoding='UTF-8') as csv_file:
             for rows in data_obj:
                 wr = csv.writer(csv_file)
                 wr.writerow(rows)
@@ -63,16 +63,17 @@ class DataHandler:
 
     def mem_to_single_column_classification(self):
         index_holder = []
-        data = np.genfromtxt('data\\ner.txt - Copy.csv', dtype=int, delimiter=',')
-        for i in range(len(data)):
-            if i != 0:
-                for j in range(21):
-                    if data[i, j] != 0:
-                        index_holder.append(data[0, j])
-        return pd.DataFrame(index_holder)
+        data = np.genfromtxt('E:\\projects\\Samira\\datasets\\multiple_column_class.csv', dtype=int, delimiter=',')
+        # target = datasets[:, 10:31]
+        for i in range(1, len(data)):
+            temp = np.nonzero(data[i, :])
+            index_holder.append(temp[0][0])
+        with open('E:\\projects\\Samira\\datasets\\single_column_class.csv', 'w') as file:
+            writer = csv.writer(file, delimiter=',', lineterminator='\n')
+            writer.writerow(index_holder)
 
-    def merg(self, data, unique_terms_with_labels, t_mat):
-        with open('data\\tags.csv', 'w') as file:
+    def merg(self, unique_terms_with_labels, t_mat):
+        with open('datasets\\NER_data_multiple_column_tag.csv', 'w') as file:
             values = []
             for key, val in unique_terms_with_labels.items():
                 a = []
@@ -84,9 +85,3 @@ class DataHandler:
                 joined_list = a + b
                 writer = csv.writer(file, delimiter=',', lineterminator='\n')
                 writer.writerow(joined_list)
-
-        # with open('data\\tags.csv', 'w', newline='\n') as myfile:
-        #     wr = csv.writer(myfile, dialect='excel')
-        #     for row in index_holder:
-        #         wr.writerow(row)
-        #     myfile.close()

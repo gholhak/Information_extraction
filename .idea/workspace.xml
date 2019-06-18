@@ -2,13 +2,43 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ffebd32c-14fd-48ce-b9a1-bf5514f3c1c4" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/test_NER_classification.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarsiTokenizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/FarsiTokenizer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/sample.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/sample.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FarsiTokenizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/concept_extraction/FarsiTokenizer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_trial_temp/test.log" beforeDir="false" afterPath="$PROJECT_DIR$/_trial_temp/test.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conditional mutual information/MW1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/conditional mutual information/entropy_estimators.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/conditional mutual information/testmi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Eng_corpus.json" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/Eng_corpus.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Eng_corpus_organized.json" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/Eng_corpus_organized.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/English_corpus.txt" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/English_corpus.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/FarsiData.json" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/FarsiData.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/FarsiData.txt" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/FarsiData.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/PersianStopWords.csv" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/PersianStopWords.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Token.txt" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/Token.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/UPC-2016.txt" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/UPC-2016.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/adverbs.dat" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/adverbs.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ner.txt - Copy.csv" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/multiple_column_class.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ner.txt.csv" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/raw_ner_data.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/sample.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/data/tags.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/features_extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/features_extract.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_co_occurance.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_co_occurance.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_handler/build_per_dict.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_handler/crawl.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_handler/data_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elastic_interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_handler/elastic_interface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extract_entities.py" beforeDir="false" afterPath="$PROJECT_DIR$/concept_extraction/extract_entities.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/features_extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/concept_extraction/features_extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/misc/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/misc/for_test_do_not_run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/misc/temp.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/misc/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/model_handler/model_util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/m_svm.joblib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_co_occurance.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_count_vector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_tf_idf.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_tf_idf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_w2v.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_w2v.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tags.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/word2vec.py" beforeDir="false" afterPath="$PROJECT_DIR$/concept_extraction/word2vec.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,45 +53,22 @@
     <SUITE FILE_PATH="coverage/Samira$temp.coverage" NAME="temp Coverage Results" MODIFIED="1560071091833" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Samira$tf_idf_run.coverage" NAME="tf_idf_run Coverage Results" MODIFIED="1560346079327" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Samira$build_per_dict.coverage" NAME="build_per_dict Coverage Results" MODIFIED="1559562829602" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_handler" />
-    <SUITE FILE_PATH="coverage/Samira$run_w2v.coverage" NAME="run_w2v Coverage Results" MODIFIED="1560628523506" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Samira$Twisted_Trial_in_test_NER_classification1_py.coverage" NAME="Twisted Trial in test_NER_classification1.py Coverage Results" MODIFIED="1560850948380" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Samira$run_w2v.coverage" NAME="run_w2v Coverage Results" MODIFIED="1560850296364" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Samira$internals.coverage" NAME="internals Coverage Results" MODIFIED="1559505566242" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="C:/python3.5/Lib/site-packages/nltk" />
     <SUITE FILE_PATH="coverage/Samira$a.coverage" NAME="a Coverage Results" MODIFIED="1560341993787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Samira$testmi.coverage" NAME="testmi Coverage Results" MODIFIED="1559971987355" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/conditional mutual information" />
     <SUITE FILE_PATH="coverage/Samira$Twisted_Trial_in_test_ner_classification_py.coverage" NAME="Twisted Trial in test_ner_classification.py Coverage Results" MODIFIED="1560144927682" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Samira$myscript.coverage" NAME="myscript Coverage Results" MODIFIED="1560316512955" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Samira$tf_idf_exec.coverage" NAME="tf_idf_exec Coverage Results" MODIFIED="1560405543013" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Samira$run_tf_idf.coverage" NAME="run_tf_idf Coverage Results" MODIFIED="1560691579708" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Samira$test.coverage" NAME="test Coverage Results" MODIFIED="1560151237749" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Samira$run_tf_idf.coverage" NAME="run_tf_idf Coverage Results" MODIFIED="1560850015583" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Samira$run_count_vector.coverage" NAME="run_count_vector Coverage Results" MODIFIED="1560850469064" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Samira$test__1_.coverage" NAME="test (1) Coverage Results" MODIFIED="1560348969312" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Samira$run_co_occurance.coverage" NAME="run_co_occurance Coverage Results" MODIFIED="1560770399172" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Samira$test.coverage" NAME="test Coverage Results" MODIFIED="1560848455414" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/misc" />
+    <SUITE FILE_PATH="coverage/Samira$run_co_occurance.coverage" NAME="run_co_occurance Coverage Results" MODIFIED="1560833478007" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="run_co_occurance.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/run_co_occurance.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-              <folding>
-                <element signature="e#0#50#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="data_utils.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data_utils.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -125,15 +132,20 @@
         <option value="$PROJECT_DIR$/w2v_exec.py" />
         <option value="$PROJECT_DIR$/tf_idf_exec.py" />
         <option value="$PROJECT_DIR$/word2vec.py" />
-        <option value="$PROJECT_DIR$/run_w2v.py" />
         <option value="$PROJECT_DIR$/data/ner.txt.csv" />
-        <option value="$PROJECT_DIR$/run_tf_idf.py" />
-        <option value="$PROJECT_DIR$/features_extract.py" />
         <option value="$PROJECT_DIR$/data/sample.csv" />
-        <option value="$PROJECT_DIR$/FarsiTokenizer.py" />
-        <option value="$PROJECT_DIR$/data/tags.csv" />
-        <option value="$PROJECT_DIR$/data_utils.py" />
         <option value="$PROJECT_DIR$/run_co_occurance.py" />
+        <option value="$PROJECT_DIR$/FarsiTokenizer.py" />
+        <option value="$PROJECT_DIR$/features_extract.py" />
+        <option value="$PROJECT_DIR$/data/tags.csv" />
+        <option value="$PROJECT_DIR$/data/matrix.csv" />
+        <option value="$PROJECT_DIR$/data_utils.py" />
+        <option value="$PROJECT_DIR$/misc/test.py" />
+        <option value="$PROJECT_DIR$/test_NER_classification1.py" />
+        <option value="$PROJECT_DIR$/test_NER_classification.py" />
+        <option value="$PROJECT_DIR$/run_w2v.py" />
+        <option value="$PROJECT_DIR$/run_tf_idf.py" />
+        <option value="$PROJECT_DIR$/run_count_vector.py" />
       </list>
     </option>
   </component>
@@ -146,7 +158,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-40" />
     <option name="y" value="136" />
     <option name="width" value="1750" />
@@ -187,9 +199,11 @@
       <recent name="E:\projects\Samira\conditional mutual information" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\projects\Samira\misc" />
+      <recent name="E:\projects\Samira\concept_extraction" />
       <recent name="E:\projects\Samira" />
-      <recent name="E:\projects\Samira\data" />
+      <recent name="E:\projects\Samira\data_handler" />
+      <recent name="E:\projects\Samira\model_handler" />
+      <recent name="E:\projects\Samira\misc" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -204,7 +218,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.run_co_occurance">
+  <component name="RunManager" selected="Python tests.Twisted Trial in test_NER_classification1.py">
     <configuration name="Unnamed" type="PythonConfigurationType" factoryName="Python">
       <module name="Samira" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -224,7 +238,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="run_co_occurance" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="run_count_vector" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Samira" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -237,7 +251,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run_co_occurance.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run_count_vector.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -281,7 +295,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="test (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Samira" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -289,51 +303,46 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/misc" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="E:\projects\Samira\run_w2v.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="tf_idf_exec" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Samira" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="E:\projects\Samira\run_tf_idf.py" />
+      <option name="SCRIPT_NAME" value="E:\projects\Samira\test_NER_classification.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="Twisted Trial in test_NER_classification1.py" type="tests" factoryName="Twisted Trial" temporary="true" nameIsGenerated="true">
+      <module name="Samira" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/test_NER_classification1.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+    </configuration>
     <list>
       <item itemvalue="Python.Unnamed" />
-      <item itemvalue="Python.test (1)" />
-      <item itemvalue="Python.tf_idf_exec" />
       <item itemvalue="Python.run_w2v" />
       <item itemvalue="Python.run_tf_idf" />
-      <item itemvalue="Python.run_co_occurance" />
+      <item itemvalue="Python.test" />
+      <item itemvalue="Python.run_count_vector" />
+      <item itemvalue="Python tests.Twisted Trial in test_NER_classification1.py" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.run_co_occurance" />
-        <item itemvalue="Python.run_tf_idf" />
+        <item itemvalue="Python tests.Twisted Trial in test_NER_classification1.py" />
+        <item itemvalue="Python.run_count_vector" />
         <item itemvalue="Python.run_w2v" />
-        <item itemvalue="Python.tf_idf_exec" />
-        <item itemvalue="Python.test (1)" />
+        <item itemvalue="Python.run_tf_idf" />
+        <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
   </component>
@@ -376,30 +385,32 @@
     <history-entry file="Twisted_Trial_in_test_ner_classification_py - 2019.06.10 at 10h 05m 48s.xml">
       <configuration name="Twisted Trial in test_ner_classification.py" configurationId="tests" />
     </history-entry>
+    <history-entry file="Twisted_Trial_in_test_NER_classification1_py - 2019.06.18 at 14h 12m 32s.xml">
+      <configuration name="Twisted Trial in test_NER_classification1.py" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.110677086" side_tool="true" visible="true" weight="0.19862069" />
+      <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.44986978" side_tool="true" visible="true" weight="0.24965517" />
       <window_info anchor="right" x="0" y="0" width="337" height="638" id="Documentation" order="7" sideWeight="0.12777779" side_tool="true" weight="0.16536458" />
       <window_info anchor="bottom" id="Database Changes" order="5" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="2" />
       <window_info anchor="bottom" id="Python Console" order="9" sideWeight="0.49934897" weight="0.32965517" />
-      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.56184894" weight="0.29793105" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.5501302" visible="true" weight="0.24965517" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.23310345" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15234375" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31835938" />
       <window_info anchor="right" id="R Packages" order="5" />
       <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
       <window_info anchor="right" id="R Graphics" order="1" />
       <window_info anchor="right" id="Database" order="2" />
-      <window_info anchor="bottom" id="Find" order="11" sideWeight="0.49414062" weight="0.23172414" />
-      <window_info anchor="right" id="SciView" order="0" sideWeight="0.87222224" visible="true" weight="0.21679688" />
+      <window_info anchor="bottom" id="Find" order="11" sideWeight="0.48697916" weight="0.23172414" />
+      <window_info anchor="right" id="SciView" order="0" sideWeight="0.87222224" weight="0.19921875" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="0" sideWeight="0.49934897" weight="0.32965517" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.88932294" visible="true" weight="0.19862069" />
+      <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.8795573" weight="0.34206897" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="6" weight="0.25" />
       <window_info anchor="bottom" id="Cvs" order="12" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="3" type="SLIDING" weight="0.4" />
@@ -424,39 +435,19 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/data_handler/build_per_dict.py</url>
-          <line>3</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/conditional mutual information/testmi.py</url>
           <line>16</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/misc/main.py</url>
-          <line>44</line>
+          <url>file://$PROJECT_DIR$/misc/for_test_do_not_run.py</url>
+          <line>40</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/misc/temp.py</url>
-          <line>9</line>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/misc/test.py</url>
-          <line>50</line>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/run_w2v.py</url>
-          <line>24</line>
-          <option name="timeStamp" value="83" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/run_co_occurance.py</url>
-          <line>31</line>
-          <option name="timeStamp" value="104" />
+          <url>file://$PROJECT_DIR$/test_NER_classification.py</url>
+          <line>20</line>
+          <option name="timeStamp" value="108" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -466,72 +457,24 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="105" />
+      <option name="time" value="109" />
     </breakpoint-manager>
   </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>i = 730</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>i = 731</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/python3.5/Lib/pickle.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_ner_classification.py" />
-    <entry file="file://$PROJECT_DIR$/data/test.txt" />
-    <entry file="file://$PROJECT_DIR$/data/FarsiData.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/English_corpus.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/FarsiData.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="27" lean-forward="true" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tf-idf.py" />
-    <entry file="file://$PROJECT_DIR$/outfile.txt" />
-    <entry file="file://$PROJECT_DIR$/misc/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/misc/temp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/misc/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="47" column="30" lean-forward="true" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/typing.pyi">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="512" column="13" selection-start-line="512" selection-start-column="5" selection-end-line="512" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/python3.5/Lib/re.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="324" selection-start-line="324" selection-end-line="324" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/document2.csv" />
     <entry file="file://$PROJECT_DIR$/data/document1.csv" />
     <entry file="file://C:/python3.5/Lib/site-packages/polyglot/tokenize/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -608,21 +551,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/a.py" />
     <entry file="file://$PROJECT_DIR$/normalization.py" />
-    <entry file="file://$PROJECT_DIR$/model_util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="13" column="20" lean-forward="true" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/corpus2memmat.py" />
-    <entry file="file://$PROJECT_DIR$/elastic_interface.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/classifier.py" />
     <entry file="file://C:/python3.5/Lib/site-packages/numpy/core/arrayprint.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -638,58 +567,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/extract_entities.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="21" column="42" lean-forward="true" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/PersianStopWords.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="5" lean-forward="true" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydevd_bundle/pydevd_exec2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
           <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/python3.5/Lib/codecs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="713">
-          <caret line="308" selection-start-line="308" selection-end-line="308" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run_tf_idf.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="36" column="18" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/word2vec.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="79" column="8" selection-start-line="79" selection-start-column="8" selection-end-line="79" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run_w2v.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -707,67 +588,217 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/sample.csv">
+    <entry file="file://$PROJECT_DIR$/concept_extraction/FarsiTokenizer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="46" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/ner.txt - Copy.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/features_extract.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="87" selection-start-line="87" selection-end-line="87" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/tags.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/ner.txt.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="156" lean-forward="true" selection-start-column="6" selection-end-column="156" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FarsiTokenizer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="108" column="17" lean-forward="true" selection-start-line="108" selection-start-column="17" selection-end-line="108" selection-end-column="17" />
+        <state relative-caret-position="290">
+          <caret line="108" column="25" selection-start-line="108" selection-start-column="25" selection-end-line="108" selection-end-column="25" />
           <folding>
             <element signature="e#94#103#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_utils.py">
+    <entry file="file://$PROJECT_DIR$/data/sample.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+        <state>
+          <caret column="156" lean-forward="true" selection-start-column="6" selection-end-column="156" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/python3.5/Lib/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="310" selection-start-line="310" selection-end-line="310" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/tag_holder.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/ner.txt - Copy.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasets/PersianStopWords.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="5" lean-forward="true" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_handler/build_per_dict.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_handler/crawl.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/concept_extraction/features_extract.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="36" column="31" selection-start-line="36" selection-start-column="31" selection-end-line="36" selection-end-column="31" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run_co_occurance.py">
+    <entry file="file://$PROJECT_DIR$/concept_extraction/word2vec.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+        <state relative-caret-position="-312">
+          <caret line="79" column="8" selection-start-line="79" selection-start-column="8" selection-end-line="79" selection-end-column="8" />
           <folding>
-            <element signature="e#0#50#0" expanded="true" />
+            <element signature="e#0#35#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/misc/tag_holder.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasets/NER_data_single_column_tag.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasets/NER_data_multiple_column_tag.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasets/single_column_class.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasets/Token.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasets/raw_ner_data.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="21" column="46" lean-forward="true" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasets/multiple_column_class.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="41" lean-forward="true" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasets/Eng_corpus.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/documentation/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/misc/for_test_do_not_run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-697">
+          <folding>
+            <element signature="e#0#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/misc/temp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_NER_classification1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_w2v.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="23" column="45" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_NER_classification.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="50" lean-forward="true" selection-start-line="4" selection-start-column="50" selection-end-line="4" selection-end-column="50" />
+          <folding>
+            <element signature="e#1#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_tf_idf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+          <folding>
+            <element signature="e#0#54#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_count_vector.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="36" column="4" lean-forward="true" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#67#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model_handler/model_util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7">
+          <caret line="13" column="20" lean-forward="true" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_handler/data_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="76" column="23" lean-forward="true" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_handler/elastic_interface.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/concept_extraction/extract_entities.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="21" column="42" lean-forward="true" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="42" />
         </state>
       </provider>
     </entry>

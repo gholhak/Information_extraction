@@ -56,7 +56,7 @@ class TF_IDF:
         return reviewTFIDFDict
 
 
-class Co_occurrence:
+class CountVector:
     def __init__(self):
         pass
 

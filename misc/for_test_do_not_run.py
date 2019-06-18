@@ -1,13 +1,9 @@
-from elastic_interface import Extract_data
-from extract_entities import Farsi_NER
-import langdetect
-from FarsiTokenizer import Tokenizer
-from data_utils import DataHandler
+from data_handler.elastic_interface import Extract_data
+from concept_extraction.extract_entities import Farsi_NER
+from concept_extraction.FarsiTokenizer import Tokenizer
+from data_handler.data_utils import DataHandler
 # from Chunker import FindChunks
 # from POSTaggerr import POSTagger
-import nltk
-import json
-import re
 
 '''
 Constants are defined here!
@@ -25,7 +21,7 @@ dh_obj = DataHandler()
 es_obj = Extract_data(HOST, PORT, DATA_DIRECTORY)
 tk_obj = Tokenizer()
 
-filename = "data\\train_fold1.txt"
+filename = "datasets\\train_fold1.txt"
 
 
 def main():

@@ -1,10 +1,10 @@
-from features_extract import TF_IDF
-from FarsiTokenizer import Tokenizer
-from data_utils import DataHandler
+from concept_extraction.features_extract import TF_IDF
+from concept_extraction.FarsiTokenizer import Tokenizer
+from data_handler.data_utils import DataHandler
 import pandas as pd
 from pandas import DataFrame
 from sklearn.feature_extraction import DictVectorizer
-from sklearn.feature_extraction.text import HashingVectorizer, TfidfVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 '''
 the classes are instantiated here.
@@ -14,19 +14,15 @@ tf_obj = TF_IDF()
 tk_obj = Tokenizer()
 dh_handler = DataHandler()
 
-sk_tfidf = TfidfVectorizer()
-
-v = DictVectorizer(sparse=False)
-
 '''
 The NER classification dataset path
 '''
-doc = 'data\\ner.txt.csv'
+corpus_address = 'datasets\\raw_ner_data.csv'
 
 
 def main():
     # load the ner dataset as csv file using pandas framework
-    corpus = pd.read_csv(doc)
+    corpus = pd.read_csv(corpus_address)
     # fill the 'na' values in the dataset using ffill method
     corpus = corpus.fillna(method='ffill')
 
