@@ -1,47 +1,43 @@
 In this project, we design and develop a library in which the reviews about the tourism industry are gathered and analyzed from social networks applications (i.e Instagram) to extract relevent knowledge about the context for the decision making process. 
 
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
-
 ### The project structure overview
 There are multiple directories and files in the structure of the project. The directories in this repository are categorized as follows:
 
-Repository for data or models. In this directories, the datasets and models are stored for the retrieve or save purposes.
-
+#### Data and model:
+The datasets and models are stored for the retrieve or save purposes in the following directories:
 ```
 /datasets
 /models
 ```
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
+#### Handlers:
+The implementation of the algorithms and processes are kept in the following directories:
 ```
-Give the example
+/concept_extraction
+/data_handler
+/model_handler
+```
+#### concept_extraction
+The scripts regarding core machine learning algorithms and feature engineering machineries are stored in this directory.
+##### data_handler
+As it is obvious, it controls the file and data preprocessing operations.
+##### model_handler
+This directory is responsible for holding the scripts that handle pickling or dumping models for the future usage. 
+
+#### Documentation:
+The instructions and manual files of the project are stored here (inclduing the readme file).
+
+#### Misc:
+We used this directory to store the test script and temporary files. It is recommend that do not modify or execute the files in this directory.
+
+### Running the tests
+In the root directory of the project, there are multiple scripts which call the core algorithms for executing specific operations. The scripts are as follows:
+```
+run_count_vector.py
+run_tf_idf.py
+run_w2v.py
+test_classification.py
 ```
 
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 ### And coding style tests
 
@@ -50,10 +46,6 @@ Explain what these tests test and why
 ```
 Give an example
 ```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 ```
@@ -65,23 +57,11 @@ Add additional notes about how to deploy this on a live system
 ```
 Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 ```
-## Versioning
-```
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-```
+
 ## Authors
 ```
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Samira Korani** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
 ```
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
-
+* Thanks god for helping me
