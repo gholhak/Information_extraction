@@ -2,16 +2,17 @@ In this project, we design and develop a library in which the reviews about the 
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-### Prerequisites
+### The project structure overview
+There are multiple directories and files in the structure of the project. The directories in this repository are categorized as follows:
 
-What things you need to install the software and how to install them
+Repository for data or models. In this directories, the datasets and models are stored for the retrieve or save purposes.
 
 ```
-Give examples
+/datasets
+/models
 ```
-
 ### Installing
 
 A step by step series of examples that tell you how to get a development env running
