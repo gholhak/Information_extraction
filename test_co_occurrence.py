@@ -2,22 +2,29 @@ from data_handler.data_utils import DataHandler
 from concept_extraction.FarsiTokenizer import Tokenizer
 from concept_extraction.features_extract import CountVector
 from concept_extraction.features_extract import CoOccurrence
+import itertools
 import pandas as pd
+from collections import Counter
+
+setting = {}
+setting['window_size'] = 1
+data_address = 'datasets\\raw_ner_data.csv'
 
 dh_obj = DataHandler()
 tk_obj = Tokenizer()
-count_vector_obj = CountVector()
-co_occurrence_obj = CoOccurrence()
-data_address = 'datasets\\ner.txt.csv'
+co_occurrence_obj = CoOccurrence(setting)
 
 
 def main():
-    raw_corpra = pd.read_csv(data_address)
-    raw_corpra_as_list = tk_obj.ner_data_document_extraction(raw_corpra)
+    test_text1 = [['می کند', 'زندگی', 'روحانی', 'چندین', 'نیویورک', 'در'],
+                  ['نیویورک', 'سفر', 'کرد', 'سفر', 'نیویورک', 'به', 'روحانی']]
 
-    for doc in raw_corpra_as_list:
-        unique_doc = count_vector_obj.extract_unique_terms(raw_corpra_as_list)
-        co_mat = co_occurrence_obj.build_co_occurrence_matrix(doc)
+    test_text2 = [['روحانی', 'به', 'نیویورک', 'سفر', 'کرد', 'در', 'نیویورک', 'چندین', 'روحانی', 'زندگی', 'می کند']]
+
+    # to see the full matrix, please put a breakpoint at the next line.
+    # Observce the results in debuger console.
+    co_mat = co_occurrence_obj.build_co_occurrence_matrix(test_text2)
+    print(co_mat)
 
 
 if __name__ == '__main__':

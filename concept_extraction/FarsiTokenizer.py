@@ -43,11 +43,11 @@ class Tokenizer():
     def ner_data_document_extraction(self, data):
         # corpus = ' '.join(corpus)
         class_holder = {}
-        corpus = list(x for x in data['words'])
+        #corpus = list(x for x in data['words'])
         doc_holder = []
         temp_holder = []
         i = 0
-        for word in corpus:
+        for word in data:
             if word == '،':
                 word = word.strip('،')
                 doc_holder.insert(i, temp_holder)

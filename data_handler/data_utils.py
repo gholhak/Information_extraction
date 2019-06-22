@@ -85,3 +85,5 @@ class DataHandler:
                 joined_list = a + b
                 writer = csv.writer(file, delimiter=',', lineterminator='\n')
                 writer.writerow(joined_list)
+
+

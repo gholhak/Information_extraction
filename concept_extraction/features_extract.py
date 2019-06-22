@@ -1,7 +1,11 @@
 import math
 import numpy as np
 from pandas import DataFrame
+import itertools
+from collections import Counter
+from data_handler.data_utils import DataHandler
 
+dh_obj = DataHandler()
 csv_columns = ['words', 'PERSON', 'NORP', 'FACILITY', 'ORGANIZATION', 'GPE', 'LOCATION', 'PRODUCT', 'EVENT',
                'WORK_OF_ART', 'LAW',
                'LANGUAGE', 'DATE', 'TIME', 'PERCENT', 'MONEY', 'MEASUREMENT', 'ORDINAL', 'CARDINAL', 'MISC',
@@ -97,14 +101,27 @@ class CountVector:
 
 
 class CoOccurrence:
-    def __init__(self):
-        self.window_size = 2
+    def __init__(self, setting):
+        self.window_size = setting['window_size']
 
-    def build_co_occurrence_matrix(self, unique_terms):
-        # +1 considers two extra dimensions for term labels in row and column
-        mat = np.zeros(len(unique_terms) + 1, len(unique_terms) + 1)
-        mat = DataFrame(mat)
-        for i in range(unique_terms):
-            mat.iloc[:, i] = unique_terms[i]
-            mat.iloc[i, :] = unique_terms[i]
-        return mat
+    def build_co_occurrence_matrix(self, doc):
+        mat_holder = []
+
+        for sen in doc:
+            co_occ = {ii: Counter({jj: 0 for jj in sen if jj != ii}) for ii in sen}
+            for ii in range(len(sen)):
+                if ii < self.window_size:
+                    c = Counter(sen[0:ii + self.window_size + 1])
+                    del c[sen[ii]]
+                    co_occ[sen[ii]] = co_occ[sen[ii]] + c
+                elif ii > len(sen) - (self.window_size + 1):
+                    c = Counter(sen[ii - self.window_size::])
+                    del c[sen[ii]]
+                    co_occ[sen[ii]] = co_occ[sen[ii]] + c
+                else:
+                    c = Counter(sen[ii - self.window_size:ii + self.window_size + 1])
+                    del c[sen[ii]]
+                    co_occ[sen[ii]] = co_occ[sen[ii]] + c
+            mat_holder.append(co_occ)
+        return mat_holder
+        # return DataFrame(mat, columns=unique_doc, index=unique_doc)

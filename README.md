@@ -32,11 +32,15 @@ We used this directory to store the test script and temporary files. It is recom
 ### Running the tests
 In the root directory of the project, there are multiple scripts which call the core algorithms for executing specific operations. The scripts are as follows:
 ```
+test_co_occurrence.py
 run_count_vector.py
 run_tf_idf.py
 run_w2v.py
 test_classification.py
 ```
+
+#### create the co-occurrence matrix
+ 
 
 ## Authors
 ```
