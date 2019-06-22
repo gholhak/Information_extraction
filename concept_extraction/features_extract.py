@@ -39,7 +39,7 @@ class TF_IDF:
         countHolder.append(countDictt)
         return countHolder
 
-    def computeIDFDict(self, countDict, whole_doc):
+    def compute_idf_dict(self, countDict, whole_doc):
         docsIDF = []
         for _doc in countDict:
             idfDict = {}
@@ -60,7 +60,7 @@ class CountVector:
     def __init__(self):
         pass
 
-    def extract_unique_terms(self, doc, corpus):
+    def extract_unique_terms(self, corpus):
         class_holder = {}
         unique_terms_dictionary = []
         value_holder = []
@@ -94,3 +94,17 @@ class CountVector:
                 i = i + 1
             j = j + 1
         return co_mat
+
+
+class CoOccurrence:
+    def __init__(self):
+        self.window_size = 2
+
+    def build_co_occurrence_matrix(self, unique_terms):
+        # +1 considers two extra dimensions for term labels in row and column
+        mat = np.zeros(len(unique_terms) + 1, len(unique_terms) + 1)
+        mat = DataFrame(mat)
+        for i in range(unique_terms):
+            mat.iloc[:, i] = unique_terms[i]
+            mat.iloc[i, :] = unique_terms[i]
+        return mat

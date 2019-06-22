@@ -11,7 +11,7 @@ svm_clf = SVC(kernel='linear', C=1)
 def main():
     _traindata = pd.read_csv('E:\\projects\\Samira\\datasets\\NER_data_single_column_tag.csv', sep=',')
     svm_clf.fit(_traindata, _traindata['tags'])
-    mh_obj.save_model(svm_clf, path='m_svm')
+    mh_obj.save_model(svm_clf, path='model_svm')
     # m_svm = mh_obj.load_model(filename='m_svm')
 
     # If you want to perform cross-validation, uncomment this piece of code

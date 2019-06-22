@@ -47,7 +47,7 @@ def main():
 
     tf_holder = tf_obj.computeTF(doc_holder)
     unique_terms_holder = tf_obj.number_of_documents_containing_terms(tf_holder)
-    idfDict = tf_obj.computeIDFDict(unique_terms_holder, tf_holder)
+    idfDict = tf_obj.compute_idf_dict(unique_terms_holder, tf_holder)
 
     for i in range(len(tf_holder)):
         tfidfvec = tf_obj.computeCorpusTFIDFDict(tf_holder[i], idfDict[i])
