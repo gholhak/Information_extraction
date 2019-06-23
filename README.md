@@ -24,7 +24,7 @@ As it is obvious, it controls the file and data preprocessing operations.
 This directory is responsible for holding the scripts that handle pickling or dumping models for the future usage. 
 
 #### Documentation:
-The instructions and manual files of the project are stored here (inclduing the readme file).
+The instructions and manual files of the project are stored here.
 
 #### Misc:
 We used this directory to store the test script and temporary files. It is recommend that do not modify or execute the files in this directory.
