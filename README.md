@@ -68,7 +68,7 @@ co-occurrence matrix for each document. Otherwise, you will see merely one co-oc
 It is worth mentioning that considering the whole document as the context increases the dimensions of the dataset exponentially where for each term in the document, we have a dimension. The solution is
 applying some feature extraction algorithms (i.e PCA or SVD) to decompose the matrix and reduce its dimensions. 
  
- ## Authors
+ ## Programmer
 ```
 Nima Shiri Harzevili (https://github.com/nimashiri)
 ```
