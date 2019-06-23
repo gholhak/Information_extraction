@@ -44,9 +44,9 @@ test_classification.py
 ##### Normal execution
 In order to test whether the implementation of the co-occurrence matrix works properly
 or not, you need to open the ``test_co_occurrence.py`` script under the root directory
-of the project. If you normally run the script, you will observe the co-occurrence matrix in 
-the IDE's console. I recommend you run the script in a debug mode to see the main format of
-the matrix. For example, put a toggle line breakpoint at line 33 and debuge the application. 
+of the project. If you normally run the script, you will observe the the co-occurrence matrix in 
+the IDE's console. I recommend you to run the script in the debug mode to see the main format of
+the matrix. For example, put a breakpoint at line 28 and debuge the application. 
 
 ##### Description of the main algorithm
 
@@ -57,16 +57,15 @@ and ``build_co_occurrence_matrix()``. The first function takes a corpra and retu
 Considers the whole corpora as the search space.
 
 2) decomposed_context:
-Decomposes the main corpra into some documents based on punctuation.
+Decomposes the main corpra into some documents based on the punctuations in the corpra.
 please note that this approach may not be the best solution of the problem.
 in order to increase the efficiency of the algorithm, it is better to decompose the context
-based on some well-known strategies.
+based on some well-known strategies. 
 
 Once you input the contexts into the ``build_co_occurrence_matrix()``, it returns a list of 
-co-occurrence matrices. If you input the ``decomposed_context``, you will see a list of 
+co-occurrence matrices. For instance, if you input the ``decomposed_context``, you will see a list of 
 co-occurrence matrix for each document. Otherwise, you will see merely one co-occurrence matrix for the whole document. 
-It is worth mentioning that considering the whole document as the context, the dimensions of the 
-matrix will increase exponentially where for each term in the document, we have a dimension. The solution is
+It is worth mentioning that considering the whole document as the context increases the dimensions of the dataset exponentially where for each term in the document, we have a dimension. The solution is
 applying some feature extraction algorithms (i.e PCA or SVD) to decompose the matrix and reduce its dimensions. 
  
  ## Authors
