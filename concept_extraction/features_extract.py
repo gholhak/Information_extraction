@@ -4,6 +4,7 @@ from pandas import DataFrame
 import itertools
 from collections import Counter
 from data_handler.data_utils import DataHandler
+import pandas as pd
 
 dh_obj = DataHandler()
 csv_columns = ['words', 'PERSON', 'NORP', 'FACILITY', 'ORGANIZATION', 'GPE', 'LOCATION', 'PRODUCT', 'EVENT',
@@ -104,24 +105,48 @@ class CoOccurrence:
     def __init__(self, setting):
         self.window_size = setting['window_size']
 
-    def build_co_occurrence_matrix(self, doc):
-        mat_holder = []
+    def extract_unique_terms(self, data):
+        uni = []
+        for term in data:
+            if term not in uni:
+                uni.append(term)
+        return uni
 
-        for sen in doc:
+    def build_record_for_each_term(self, co_occurrence_dictionary, co_mat):
+        for i in range(len(co_mat)):
+            for row in co_mat[i].index:
+                print(co_occurrence_dictionary[i][row])
+        return co_mat
+
+    def build_co_occurrence_matrix(self, doc):
+        if any(isinstance(i, list) for i in doc) is False:
+            corpus = [list(x for x in doc)]
+        else:
+            corpus = doc
+        mat_holder = []
+        dict_holder = []
+        for sen in corpus:
             co_occ = {ii: Counter({jj: 0 for jj in sen if jj != ii}) for ii in sen}
             for ii in range(len(sen)):
+                # iterates from beginning of the document to reach the window_size max value
                 if ii < self.window_size:
                     c = Counter(sen[0:ii + self.window_size + 1])
                     del c[sen[ii]]
                     co_occ[sen[ii]] = co_occ[sen[ii]] + c
+                # keep distance from the last elements with regard to window_size
                 elif ii > len(sen) - (self.window_size + 1):
                     c = Counter(sen[ii - self.window_size::])
                     del c[sen[ii]]
                     co_occ[sen[ii]] = co_occ[sen[ii]] + c
+                # capture terms from the center of a document
                 else:
                     c = Counter(sen[ii - self.window_size:ii + self.window_size + 1])
                     del c[sen[ii]]
                     co_occ[sen[ii]] = co_occ[sen[ii]] + c
-            mat_holder.append(co_occ)
+            uni = self.extract_unique_terms(sen)
+
+            co_occ_mat_for_docs = pd.DataFrame(co_occ, columns=uni, index=uni)
+            mat_holder.append(co_occ_mat_for_docs)
+            dict_holder.append(co_occ)
+        self.build_record_for_each_term(dict_holder, mat_holder)
         return mat_holder
-        # return DataFrame(mat, columns=unique_doc, index=unique_doc)

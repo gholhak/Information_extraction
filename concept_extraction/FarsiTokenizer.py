@@ -40,19 +40,34 @@ class Tokenizer():
         temp = pattern.sub(r'\1\n\n', data)
         return [sentence.replace('\n', ' ').strip() for sentence in temp.split('\n\n') if sentence.strip()]
 
-    def ner_data_document_extraction(self, data):
+    def ner_data_document_extraction(self, data, test=False):
         # corpus = ' '.join(corpus)
-        class_holder = {}
-        #corpus = list(x for x in data['words'])
+        if isinstance(data, list) is False and test is True:
+            raise TypeError("Please assign test parameter to False")
+        elif isinstance(data, list) is True and test is False:
+            raise TypeError("Please assign test parameter to True")
+        else:
+            pass
+
+        if test:
+            testdata = list(x for x in data)
+            complete_context = testdata
+            pivot = testdata
+        else:
+            corpus = data['words']
+            complete_context = list(y for y in corpus)
+            pivot = corpus
+        i = 0
         doc_holder = []
         temp_holder = []
-        i = 0
-        for word in data:
+
+        for word in pivot:
             if word == '،':
                 word = word.strip('،')
                 doc_holder.insert(i, temp_holder)
                 i = i + 1
                 temp_holder = []
+                pass
             if word == '!':
                 word = word.strip('!')
                 doc_holder.insert(i, temp_holder)
@@ -105,8 +120,8 @@ class Tokenizer():
                 temp_holder = []
             else:
                 temp_holder.append(word)
-        #doc_holder.append(temp_holder)
-        return doc_holder
+        doc_holder.append(temp_holder)
+        return doc_holder, complete_context
 
     # before start tokenizing words, first you need to run the sentence tokenizer function
     def word_tokenizer(self, data):
