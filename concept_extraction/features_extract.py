@@ -1,8 +1,7 @@
 import math
 import numpy as np
 from pandas import DataFrame
-import itertools
-from collections import Counter, OrderedDict, defaultdict
+from collections import Counter
 from data_handler.data_utils import DataHandler
 import pandas as pd
 
@@ -121,22 +120,23 @@ class CoOccurrence:
         return array
 
     def build_vector_from_co_mat(self, co_occurrence_dictionary, co_mat):
-
         terms_vector_holder = []
+        jj = 0
         for item in co_occurrence_dictionary:
             for sub_item in item:
                 result_array = ([])
                 for key in sub_item:
-                    result = DataFrame.as_matrix(co_mat[0].loc[key, :])
+                    result = DataFrame.as_matrix(co_mat[jj].loc[key, :])
                     result_array = np.append(result_array, result)
                 result_array[np.isnan(result_array)] = 0
-                vector_indicator = (np.power(self.window_size, 2) + 1) * len(co_mat[0])
+                vector_indicator = (np.power(self.window_size, 2) + 1) * len(co_mat[jj])
                 if len(result_array) < vector_indicator:
                     full_vector = self.padding(result_array, vector_indicator)
                     terms_vector_holder.append(full_vector)
                 else:
                     full_vector = self.padding(result_array, vector_indicator)
                     terms_vector_holder.append(full_vector)
+            jj = jj + 1
         return terms_vector_holder
 
     def build_co_occurrence_matrix(self, doc):
@@ -180,4 +180,4 @@ class CoOccurrence:
             co_occ_mat_for_docs = pd.DataFrame(co_occ_unique, columns=uni, index=uni)
             mat_holder.append(co_occ_mat_for_docs)
             dict_holder.append(co_occ)
-        return mat_holder, dict_holder
+        return mat_holder, dict_holder, co_occ_unique
