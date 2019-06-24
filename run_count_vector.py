@@ -27,11 +27,11 @@ def main():
     # consider each sentence in corpus as a document
     separated_documents = tk_obj.ner_data_document_extraction(raw_corpus)
     # extract unique tokens from the corpus
-    all_unique_terms, unique_terms_with_labels = co_obj.extract_unique_terms(corpus_as_a_list, raw_corpus)
+    all_unique_terms, unique_terms_with_labels = co_obj.extract_unique_terms(raw_corpus)
     # count the co-occurance of each term in for each document
-    co_occurence_matrix = co_obj.compute_count(all_unique_terms, separated_documents)
-    co_occurence_matrix = pd.DataFrame(co_occurence_matrix, columns=all_unique_terms)
-    t_mat = co_occurence_matrix.T
+    count_matrix = co_obj.compute_count(all_unique_terms, separated_documents)
+    count_matrix = pd.DataFrame(count_matrix, columns=all_unique_terms)
+    t_mat = count_matrix.T
 
     # output final dataset
     dh_handler.merg(unique_terms_with_labels, t_mat)

@@ -2,7 +2,7 @@ import math
 import numpy as np
 from pandas import DataFrame
 import itertools
-from collections import Counter
+from collections import Counter, OrderedDict, defaultdict
 from data_handler.data_utils import DataHandler
 import pandas as pd
 
@@ -112,11 +112,32 @@ class CoOccurrence:
                 uni.append(term)
         return uni
 
-    def build_record_for_each_term(self, co_occurrence_dictionary, co_mat):
-        for i in range(len(co_mat)):
-            for row in co_mat[i].index:
-                print(co_occurrence_dictionary[i][row])
-        return co_mat
+    def padding(self, array, vector_indicator):
+        pad = ([])
+        difference = vector_indicator - np.size(array, 0)
+        for i in range(difference):
+            pad = np.append(pad, 0)
+        array = np.append(array, pad)
+        return array
+
+    def build_vector_from_co_mat(self, co_occurrence_dictionary, co_mat):
+
+        terms_vector_holder = []
+        for item in co_occurrence_dictionary:
+            for sub_item in item:
+                result_array = ([])
+                for key in sub_item:
+                    result = DataFrame.as_matrix(co_mat[0].loc[key, :])
+                    result_array = np.append(result_array, result)
+                result_array[np.isnan(result_array)] = 0
+                vector_indicator = (np.power(self.window_size, 2) + 1) * len(co_mat[0])
+                if len(result_array) < vector_indicator:
+                    full_vector = self.padding(result_array, vector_indicator)
+                    terms_vector_holder.append(full_vector)
+                else:
+                    full_vector = self.padding(result_array, vector_indicator)
+                    terms_vector_holder.append(full_vector)
+        return terms_vector_holder
 
     def build_co_occurrence_matrix(self, doc):
         if any(isinstance(i, list) for i in doc) is False:
@@ -126,27 +147,37 @@ class CoOccurrence:
         mat_holder = []
         dict_holder = []
         for sen in corpus:
-            co_occ = {ii: Counter({jj: 0 for jj in sen if jj != ii}) for ii in sen}
+            co_occ_unique = {ii: Counter({jj: 0 for jj in sen if jj != ii}) for ii in sen}
+            co_occ = []
+            i = 0
+            for item in sen:
+                co_occ.append([item])
+                co_occ[i] = Counter(sen)
+                i = i + 1
             for ii in range(len(sen)):
                 # iterates from beginning of the document to reach the window_size max value
                 if ii < self.window_size:
                     c = Counter(sen[0:ii + self.window_size + 1])
+                    co_occ[ii].clear()
+                    co_occ[ii] = co_occ[ii] + c
                     del c[sen[ii]]
-                    co_occ[sen[ii]] = co_occ[sen[ii]] + c
+                    co_occ_unique[sen[ii]] = co_occ_unique[sen[ii]] + c
                 # keep distance from the last elements with regard to window_size
                 elif ii > len(sen) - (self.window_size + 1):
                     c = Counter(sen[ii - self.window_size::])
+                    co_occ[ii].clear()
+                    co_occ[ii] = co_occ[ii] + c
                     del c[sen[ii]]
-                    co_occ[sen[ii]] = co_occ[sen[ii]] + c
+                    co_occ_unique[sen[ii]] = co_occ_unique[sen[ii]] + c
                 # capture terms from the center of a document
                 else:
                     c = Counter(sen[ii - self.window_size:ii + self.window_size + 1])
+                    co_occ[ii].clear()
+                    co_occ[ii] = co_occ[ii] + c
                     del c[sen[ii]]
-                    co_occ[sen[ii]] = co_occ[sen[ii]] + c
+                    co_occ_unique[sen[ii]] = co_occ_unique[sen[ii]] + c
             uni = self.extract_unique_terms(sen)
-
-            co_occ_mat_for_docs = pd.DataFrame(co_occ, columns=uni, index=uni)
+            co_occ_mat_for_docs = pd.DataFrame(co_occ_unique, columns=uni, index=uni)
             mat_holder.append(co_occ_mat_for_docs)
             dict_holder.append(co_occ)
-        self.build_record_for_each_term(dict_holder, mat_holder)
-        return mat_holder
+        return mat_holder, dict_holder

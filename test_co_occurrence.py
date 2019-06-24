@@ -25,8 +25,9 @@ def main():
     # specifies the context where the algorithm searches
     decomposed_context, complete_context = tk_obj.ner_data_document_extraction(test_corpra, test=True)
     # the output of the main algorithm. co_mat is a co-occurrence of the corpora as a dataframe structure
-    co_mat = co_occurrence_obj.build_co_occurrence_matrix(decomposed_context)
-
+    # dict_mat is the co-occurrence as a dictionary
+    co_mat, dict_mat = co_occurrence_obj.build_co_occurrence_matrix(complete_context)
+    vectors = co_occurrence_obj.build_vector_from_co_mat(dict_mat, co_mat)
     print(co_mat)
 
 
