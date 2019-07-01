@@ -39,7 +39,7 @@ def main():
     This function, extracts documents from the NER csv dataset.
     the method is so naive. So, do not hesitate to code your own function
     '''
-    doc_holder = tk_obj.ner_data_document_extraction(corpus)
+    doc_holder = tk_obj.document_extraction(corpus)
 
     '''
     Iterates over each document in doc_holder list

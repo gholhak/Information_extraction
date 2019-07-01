@@ -25,7 +25,7 @@ def main():
     # tags_list = dh_handler.mem_to_single_column_classification()
 
     # consider each sentence in corpus as a document
-    separated_documents = tk_obj.ner_data_document_extraction(raw_corpus)
+    separated_documents = tk_obj.document_extraction(raw_corpus)
     # extract unique tokens from the corpus
     all_unique_terms, unique_terms_with_labels = co_obj.extract_unique_terms(raw_corpus)
     # count the co-occurance of each term in for each document

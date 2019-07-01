@@ -102,7 +102,7 @@ class CountVector:
 
 class CoOccurrence:
     def __init__(self, setting):
-        self.window_size = setting['window_size']
+        self.window_size = setting['w_size']
 
     def extract_unique_terms(self, data):
         uni = []
@@ -146,6 +146,7 @@ class CoOccurrence:
             corpus = doc
         mat_holder = []
         dict_holder = []
+        co_occ_unique_holder = []
         for sen in corpus:
             co_occ_unique = {ii: Counter({jj: 0 for jj in sen if jj != ii}) for ii in sen}
             co_occ = []
@@ -180,4 +181,5 @@ class CoOccurrence:
             co_occ_mat_for_docs = pd.DataFrame(co_occ_unique, columns=uni, index=uni)
             mat_holder.append(co_occ_mat_for_docs)
             dict_holder.append(co_occ)
-        return mat_holder, dict_holder, co_occ_unique
+            co_occ_unique_holder.append(co_occ_unique)
+        return mat_holder, dict_holder, co_occ_unique_holder

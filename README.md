@@ -50,7 +50,7 @@ the matrix. For example, put a breakpoint at line 28 and debuge the application.
 
 ##### Description of the main algorithm
 
-There are two functions in the script namely ``ner_data_document_extraction()`` 
+There are two functions in the script namely ``document_extraction()`` 
 and ``build_co_occurrence_matrix()``. The first function takes a corpra and returns two types of documents as the list type.
 
 1) complete_context:

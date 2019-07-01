@@ -21,7 +21,7 @@ corpus_address = 'datasets\\raw_ner_data.csv'
 corpus = pd.read_csv(corpus_address)
 
 # extract the documents for the w2v model.
-doc_holder = tk_obj.ner_data_document_extraction(corpus)
-training_data = w2v.generate_training_data(doc_holder)
+decomposed_context, complete_context = tk_obj.document_extraction(corpus, test=False)
+training_data = w2v.generate_training_data(decomposed_context)
 w2v.train(training_data)
 print('log')

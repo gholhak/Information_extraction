@@ -24,7 +24,7 @@ test_corpora = ['روحانی', 'به', 'نیویورک', 'سفر', 'کرد', '�
 # the entry point of the module
 def main():
     # specifies the context where the algorithm searches
-    decomposed_context, complete_context = tk_obj.ner_data_document_extraction(main_corpora, test=False)
+    decomposed_context, complete_context = tk_obj.document_extraction(test_corpora, test=True)
     # the output of the main algorithm. co_mat is a co-occurrence of the corpora as a dataframe structure
     # dict_mat is the co-occurrence as a dictionary
     co_mat, dict_mat, numpy_array = co_occurrence_obj.build_co_occurrence_matrix(complete_context)

@@ -25,19 +25,19 @@ class DataHandler:
         except IOError:
             print("I/O error")
 
-    def save_list_data_as_txt(self, data, filename):
+    @staticmethod
+    def save_list_data_as_txt(data, filename):
         with open("datasets\\" + filename, 'w', encoding='UTF-8') as f:
             f.writelines(json.dumps(data))
 
-    def load_txt_data_as_list(self, filename):
-        vocab = {}
+    @staticmethod
+    def load_txt_data_as_list(filename):
         with codecs.open(filename, encoding='UTF-8') as f:
             lines = f.readlines()
-            # for line in f:
-            #     vocab.update(line.strip().split())
         return lines
 
-    def extract_tagged_tokens_as_csv(self, data, filename):
+    @staticmethod
+    def extract_tagged_tokens_as_csv(data, filename):
         data_obj = []
         for t in data:
             # NER parser

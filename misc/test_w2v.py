@@ -1,3 +1,13 @@
+# ------------------------------------------------------------------------------+
+#
+#   Nathan A. Rooy
+#   Simple word2vec from scratch with Python
+#   2018-FEB
+#
+# ------------------------------------------------------------------------------+
+
+# --- IMPORT DEPENDENCIES ------------------------------------------------------+
+
 import numpy as np
 import re
 from collections import defaultdict
@@ -104,7 +114,8 @@ class word2vec():
                 self.loss += -np.sum([u[word.index(1)] for word in w_c]) + len(w_c) * np.log(np.sum(np.exp(u)))
                 # self.loss += -2*np.log(len(w_c)) -np.sum([u[word.index(1)] for word in w_c]) + (len(w_c) * np.log(np.sum(np.exp(u))))
 
-            print('EPOCH:', i, 'LOSS:', self.loss)
+            print
+            'EPOCH:', i, 'LOSS:', self.loss
         pass
 
     # input a word, returns a vector (if available)
@@ -125,8 +136,8 @@ settings['neg_samp'] = 10  # number of negative words to use during training
 settings['learning_rate'] = 0.01  # learning rate
 np.random.seed(0)  # set the seed for reproducibility
 
-#corpus = [['the', 'quick', 'brown', 'fox', 'jumped', 'over', 'the', 'lazy', 'dog']]
-corpus = [['کرد', 'سفر', 'نیویورک', 'به', 'روحانی']]
+corpus = [['the', 'quick', 'brown', 'fox', 'jumped', 'over', 'the', 'lazy', 'dog']]
+
 # INITIALIZE W2V MODEL
 w2v = word2vec()
 
