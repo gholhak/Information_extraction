@@ -1,7 +1,7 @@
-from preprocess import DataHandler
-from IR import InformationExtraxtion
+from data_handler.data_utils import DataHandler
+
 import langdetect
-from FarsiTokenizer import Tokenizer
+from concept_extraction.FarsiTokenizer import Tokenizer
 import nltk
 import json
 
