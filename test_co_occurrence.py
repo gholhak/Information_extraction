@@ -6,7 +6,7 @@ import numpy as np
 
 setting = {}
 # determines the window-size
-setting['window_size'] = 2
+setting['w_size'] = 2
 # the file address of the main corpora gathered by Fred
 main_corpora_address = 'datasets\\raw_ner_data.csv'
 
@@ -27,8 +27,10 @@ def main():
     decomposed_context, complete_context = tk_obj.document_extraction(test_corpora, test=True)
     # the output of the main algorithm. co_mat is a co-occurrence of the corpora as a dataframe structure
     # dict_mat is the co-occurrence as a dictionary
-    co_mat, dict_mat, numpy_array = co_occurrence_obj.build_co_occurrence_matrix(complete_context)
-    vectors = co_occurrence_obj.build_vector_from_co_mat(dict_mat, co_mat)
+    co_mat_holder, dict_holder, co_occ_unique_holder, unique_labels = co_occurrence_obj.build_co_occurrence_matrix(
+        complete_context)
+    # dh_obj.save_data(co_mat_holder, unique_labels)
+    vectors = co_occurrence_obj.build_vector_from_co_mat(dict_holder, co_mat_holder)
     print(vectors)
 
     # arr = np.zeros((len(vectors), len(vectors[0])))

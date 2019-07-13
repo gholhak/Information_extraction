@@ -10,6 +10,16 @@ class DataHandler:
     def __init__(self):
         pass
 
+    def save_data(self, data, unique_labels):
+        i = 0
+        for i in range(len(data)):
+            item = pd.DataFrame.as_matrix(data[i])
+            item[np.isnan(item)] = 0
+
+            item = pd.DataFrame(item, columns=unique_labels[i], index=unique_labels[i])
+            address = 'models\\' + str(i) + '.csv'
+            item.to_csv(address, encoding=None)
+
     def dict_to_csv(self, data):
         csv_columns = ['words', 'PERSON', 'NORP', 'FACILITY', 'ORGANIZATION', 'GPE', 'LOCATION', 'PRODUCT', 'EVENT',
                        'WORK_OF_ART', 'LAW',
@@ -85,5 +95,3 @@ class DataHandler:
                 joined_list = a + b
                 writer = csv.writer(file, delimiter=',', lineterminator='\n')
                 writer.writerow(joined_list)
-
-

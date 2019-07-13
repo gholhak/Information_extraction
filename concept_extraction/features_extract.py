@@ -104,6 +104,23 @@ class CoOccurrence:
     def __init__(self, setting):
         self.window_size = setting['w_size']
 
+    def get_vector(self, key):
+        # co_mat = self.binerize_co_occurrence(self.mat_holder)
+        co_mat = self.mat_holder
+        center_word = DataFrame.as_matrix(co_mat[0].loc[key, :])
+        center_word[np.isnan(center_word)] = 0
+        center_word = np.divide(center_word, np.sum(center_word))
+        return list(center_word)
+
+    def binerize_co_occurrence(self, co_mat):
+        for i in range(0, len(co_mat[0])):
+            for j in range(0, len(co_mat[0])):
+                if np.isnan(co_mat[0].iloc[i, j]):
+                    co_mat[0].iloc[i, j] = 0
+                else:
+                    co_mat[0].iloc[i, j] = 1
+        return co_mat
+
     def extract_unique_terms(self, data):
         uni = []
         for term in data:
@@ -119,7 +136,7 @@ class CoOccurrence:
         array = np.append(array, pad)
         return array
 
-    def build_vector_from_co_mat(self, co_occurrence_dictionary, co_mat):
+    def build_vector_from_co_mat(self, co_mat, co_occurrence_dictionary):
         terms_vector_holder = []
         jj = 0
         for item in co_occurrence_dictionary:
@@ -127,6 +144,7 @@ class CoOccurrence:
                 result_array = ([])
                 for key in sub_item:
                     result = DataFrame.as_matrix(co_mat[jj].loc[key, :])
+                    result[np.isnan(result)] = 0
                     result_array = np.append(result_array, result)
                 result_array[np.isnan(result_array)] = 0
                 vector_indicator = (np.power(self.window_size, 2) + 1) * len(co_mat[jj])
@@ -144,16 +162,18 @@ class CoOccurrence:
             corpus = [list(x for x in doc)]
         else:
             corpus = doc
-        mat_holder = []
+        self.mat_holder = []
         dict_holder = []
         co_occ_unique_holder = []
+        unique_labels = []
+        binary_co_occurrence = []
         for sen in corpus:
             co_occ_unique = {ii: Counter({jj: 0 for jj in sen if jj != ii}) for ii in sen}
             co_occ = []
             i = 0
             for item in sen:
                 co_occ.append([item])
-                co_occ[i] = Counter(sen)
+                co_occ[i] = Counter(sen[i])
                 i = i + 1
             for ii in range(len(sen)):
                 # iterates from beginning of the document to reach the window_size max value
@@ -163,6 +183,7 @@ class CoOccurrence:
                     co_occ[ii] = co_occ[ii] + c
                     del c[sen[ii]]
                     co_occ_unique[sen[ii]] = co_occ_unique[sen[ii]] + c
+
                 # keep distance from the last elements with regard to window_size
                 elif ii > len(sen) - (self.window_size + 1):
                     c = Counter(sen[ii - self.window_size::])
@@ -177,9 +198,11 @@ class CoOccurrence:
                     co_occ[ii] = co_occ[ii] + c
                     del c[sen[ii]]
                     co_occ_unique[sen[ii]] = co_occ_unique[sen[ii]] + c
+
             uni = self.extract_unique_terms(sen)
+            unique_labels.append(uni)
             co_occ_mat_for_docs = pd.DataFrame(co_occ_unique, columns=uni, index=uni)
-            mat_holder.append(co_occ_mat_for_docs)
+            self.mat_holder.append(co_occ_mat_for_docs)
             dict_holder.append(co_occ)
             co_occ_unique_holder.append(co_occ_unique)
-        return mat_holder, dict_holder, co_occ_unique_holder
+        return self.mat_holder, dict_holder, co_occ_unique_holder, unique_labels

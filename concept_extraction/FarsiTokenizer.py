@@ -66,6 +66,7 @@ class Tokenizer():
         i = 0
         doc_holder = []
         temp_holder = []
+        complete_context = data
         for word in pivot:
             if word == '،':
                 word = word.strip('،')
