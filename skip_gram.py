@@ -21,7 +21,7 @@ class SimpleNeuralNetwork:
 
         self.learning_rate = 0.00001
         self.window_size = 2
-        self.epoch = 500
+        self.epoch = 50000
 
         """
         networks' configuration
@@ -57,48 +57,17 @@ class SimpleNeuralNetwork:
             for i, word in enumerate(sentence):
 
                 # w_target  = sentence[i]
-                # w_target = self.word2onehot(sentence[i])
-                w_target = (co_occ_obj.get_vector(sentence[i]))
+                w_target = self.word2onehot(sentence[i])
+                # w_target = (co_occ_obj.get_vector(sentence[i]))
 
                 # CYCLE THROUGH CONTEXT WINDOW
                 w_context = []
                 for j in range(i - self.window_size, i + self.window_size + 1):
                     if j != i and sent_len - 1 >= j >= 0:
-                        w_context.append(co_occ_obj.get_vector(sentence[j]))
+                        # w_context.append(co_occ_obj.get_vector(sentence[j]))
+                        w_context.append(self.word2onehot(sentence[j]))
                 training_data.append([w_target, w_context])
         return np.array(training_data)
-
-        # training_data = []
-        # jj = 0
-        #
-        # if encoding == 3:
-        #     co_mat = co_occ_obj.binerize_co_occurrence(co_mat)
-        # elif encoding == 2:
-        #     pass
-        #
-        # for item in co_occ_dictionary:
-        #     temp_data = []
-        #     oneHotdata = []
-        #     for key in item:
-        #         one_hot_w_target = self.word2onehot(key)
-        #         center_word = DataFrame.as_matrix(co_mat[jj].loc[key, :])
-        #         center_word[np.isnan(center_word)] = 0
-        #         center_word = list(center_word)
-        #         center_context = []
-        #         for sub_item in item[key]:
-        #             temp = DataFrame.as_matrix(co_mat[jj].loc[sub_item, :])
-        #             temp[np.isnan(temp)] = 0
-        #             temp = list(temp)
-        #             one_hot_context = self.word2onehot(sub_item)
-        #             center_context.append(temp)
-        #         temp_data.append([center_word, center_context])
-        #         oneHotdata.append([one_hot_w_target, center_context])
-        #     jj = jj + 1
-        # if encoding == 1:
-        #     training_data.append(oneHotdata)
-        # else:
-        #     training_data.append(temp_data)
-        # return training_data
 
     '''
     sigmoid activation function
@@ -145,7 +114,7 @@ class SimpleNeuralNetwork:
         dim = np.power(self.setting['window_size'], 2) + 1
         # dim = 2
 
-        np.random.seed(100)
+        np.random.seed(0)
         self.input_to_hidden_weights = np.random.uniform(-0.8, 0.8, (len(unique_terms[0]), dim))
         self.hidden_to_output_weights = np.random.uniform(-0.8, 0.8, (dim, len(unique_terms[0])))
         epch_holder = []
@@ -189,6 +158,8 @@ def main():
 
     co_mat, co_occ_dictionary, co_occ_dictionary_unique, unique_labels = co_occ_obj.build_co_occurrence_matrix(
         complete_context)
+
+    co_mat = co_occ_obj.Hellinger_distance(co_mat)
     # vectors = co_occ_obj.build_vector_from_co_mat(co_mat, co_occ_dictionary)
 
     # co_occ_dictionary_unique testing

@@ -4,6 +4,7 @@ from pandas import DataFrame
 from collections import Counter
 from data_handler.data_utils import DataHandler
 import pandas as pd
+import dictances
 
 dh_obj = DataHandler()
 csv_columns = ['words', 'PERSON', 'NORP', 'FACILITY', 'ORGANIZATION', 'GPE', 'LOCATION', 'PRODUCT', 'EVENT',
@@ -104,20 +105,45 @@ class CoOccurrence:
     def __init__(self, setting):
         self.window_size = setting['w_size']
 
+    def hellinger_core(self, p, q):
+
+        list_of_squares = []
+        for p_i, q_i in zip(p, q):
+            # caluclate the square of the difference of ith distr elements
+            s = (math.sqrt(p_i) - math.sqrt(q_i)) ** 2
+
+            # append
+            list_of_squares.append(s)
+
+        # calculate sum of squares
+        sosq = sum(list_of_squares)
+
+        return sosq / math.sqrt(2)
+
+    def weighted_co_occ(self, co_mat):
+        co_mat = pd.DataFrame.as_matrix(co_mat[0])
+        for i in range(0, len(co_mat[0])):
+            s = np.sum(co_mat[i, :])
+            for j in range(i, len(co_mat)):
+                co_mat[i, j] = np.divide(co_mat[i, j], s)
+
+        for i in range(0, len(co_mat[0])):
+            for j in range(i, len(co_mat[0])):
+                co_mat[j][i] = co_mat[i][j]
+        self.co_mat_he = pd.DataFrame(co_mat, columns=self.uni, index=self.uni)
+        return self.co_mat_he
+
     def get_vector(self, key):
         # co_mat = self.binerize_co_occurrence(self.mat_holder)
-        co_mat = self.mat_holder
-        center_word = DataFrame.as_matrix(co_mat[0].loc[key, :])
-        center_word[np.isnan(center_word)] = 0
-        center_word = np.divide(center_word, np.sum(center_word))
+        # co_mat = self.co_mat_he
+        center_word = DataFrame.as_matrix(self.co_mat_he.loc[key, :])
+        # center_word = np.divide(center_word, np.sum(center_word))
         return list(center_word)
 
     def binerize_co_occurrence(self, co_mat):
         for i in range(0, len(co_mat[0])):
             for j in range(0, len(co_mat[0])):
-                if np.isnan(co_mat[0].iloc[i, j]):
-                    co_mat[0].iloc[i, j] = 0
-                else:
+                if co_mat[0].iloc[i, j] != 0:
                     co_mat[0].iloc[i, j] = 1
         return co_mat
 
@@ -144,7 +170,6 @@ class CoOccurrence:
                 result_array = ([])
                 for key in sub_item:
                     result = DataFrame.as_matrix(co_mat[jj].loc[key, :])
-                    result[np.isnan(result)] = 0
                     result_array = np.append(result_array, result)
                 result_array[np.isnan(result_array)] = 0
                 vector_indicator = (np.power(self.window_size, 2) + 1) * len(co_mat[jj])
@@ -166,7 +191,6 @@ class CoOccurrence:
         dict_holder = []
         co_occ_unique_holder = []
         unique_labels = []
-        binary_co_occurrence = []
         for sen in corpus:
             co_occ_unique = {ii: Counter({jj: 0 for jj in sen if jj != ii}) for ii in sen}
             co_occ = []
@@ -199,10 +223,12 @@ class CoOccurrence:
                     del c[sen[ii]]
                     co_occ_unique[sen[ii]] = co_occ_unique[sen[ii]] + c
 
-            uni = self.extract_unique_terms(sen)
-            unique_labels.append(uni)
-            co_occ_mat_for_docs = pd.DataFrame(co_occ_unique, columns=uni, index=uni)
+            self.uni = self.extract_unique_terms(sen)
+            unique_labels.append(self.uni)
+            co_occ_mat_for_docs = pd.DataFrame(co_occ_unique, columns=self.uni, index=self.uni)
+            co_occ_mat_for_docs = co_occ_mat_for_docs.fillna(0)
             self.mat_holder.append(co_occ_mat_for_docs)
+
             dict_holder.append(co_occ)
             co_occ_unique_holder.append(co_occ_unique)
         return self.mat_holder, dict_holder, co_occ_unique_holder, unique_labels
